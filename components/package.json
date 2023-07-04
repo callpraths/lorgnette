@@ -1,15 +1,14 @@
 {
-  "name": "lv-main",
-  "description": "Webcomponent lv-main following open-wc recommendations",
+  "name": "lorgnette-components",
+  "description": "Components for lorgnette",
   "license": "MIT",
-  "author": "lv-main",
+  "author": "Prathmesh Prabhu",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
-    ".": "./dist/src/index.js",
-    "./lv-main.js": "./dist/src/lv-main.js"
+    ".": "./dist/src/index.js"
   },
   "scripts": {
     "analyze": "cem analyze --litelement",
