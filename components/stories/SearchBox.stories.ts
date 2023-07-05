@@ -1,14 +1,37 @@
+import { html } from 'lit';
 import '../src/define.js';
-import { htmlStory, Story } from './utils.js';
+import { withEventLog, withTheme } from './utils.js';
 
 export default {
   title: 'SearchBox',
   component: 'lv-search-box',
 };
 
-const Template: Story = () => htmlStory`
-  <lv-search-box>
-  </lv-search-box>
-`;
-
-export const Regular = Template.bind({});
+export const Default = () => withTheme(html`<lv-search-box></lv-search-box>`);
+export const MatchCase = () =>
+  withTheme(html`<lv-search-box matchcase></lv-search-box>`);
+export const MatchRegex = () =>
+  withTheme(html`<lv-search-box matchregex></lv-search-box>`);
+export const MatchWholeWord = () =>
+  withTheme(html`<lv-search-box matchwholeword></lv-search-box>`);
+export const Placeholder = () =>
+  withTheme(
+    html`<lv-search-box placeholder="Custom placeholder"></lv-search-box>`
+  );
+export const LabelPlaceholder = () =>
+  withTheme(
+    html`<lv-search-box
+      labelplaceholder="Custom label placeholder"
+    ></lv-search-box>`
+  );
+export const Search = () =>
+  withTheme(html`<lv-search-box search="Custom search"></lv-search-box>`);
+export const Label = () =>
+  withTheme(html`<lv-search-box label="Custom label"></lv-search-box>`);
+export const Events = () =>
+  withTheme(
+    withEventLog(html`<lv-search-box></lv-search-box>`, [
+      'search-box-accept',
+      'search-box-reject',
+    ])
+  );

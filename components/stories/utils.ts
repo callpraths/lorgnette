@@ -1,4 +1,5 @@
 import { html, TemplateResult } from 'lit';
+import './EventLogger.js';
 
 export interface Story<T = unknown> {
   (args: T): TemplateResult;
@@ -6,9 +7,15 @@ export interface Story<T = unknown> {
   argTypes?: Record<string, unknown>;
 }
 
-export const htmlStory = (
-  strings: TemplateStringsArray,
-  ...values: unknown[]
-): TemplateResult => html`
-  <div class="sl-theme-dark">${html(strings, values)}</div>
-`;
+export const withTheme = (inner: TemplateResult): TemplateResult => html` <div
+  class="sl-theme-dark"
+>
+  ${inner}
+</div>`;
+
+export const withEventLog = (
+  inner: TemplateResult,
+  events: string[]
+): TemplateResult => html` <sbx-event-logger .events=${events}
+  >${inner}</sbx-event-logger
+>`;
