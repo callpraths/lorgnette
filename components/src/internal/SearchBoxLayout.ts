@@ -1,4 +1,10 @@
 import { LitElement, css, html } from 'lit';
+import { property } from 'lit/decorators.js';
+import {
+  highlightClassName,
+  highlightColorStyles,
+  noHighlightClassName,
+} from '../lib/highlightColor.js';
 
 /**
  * Layout for {@link SearchBox}.
@@ -8,45 +14,58 @@ import { LitElement, css, html } from 'lit';
  * @internal
  */
 export class SearchBoxLayout extends LitElement {
-  static styles = css`
-    :host {
-      width: 100%;
-    }
-    #card {
-      width: 100%;
-      --padding: 0.125rem;
-    }
-    #container {
-      display: flex;
-      flex-flow: column nowrap;
-      gap: 0.125rem;
-    }
-    #top {
-      display: flex;
-      flex-flow: row nowrap;
-      gap: 1rem;
-    }
-    ::slotted([slot='search']) {
-      flex-grow: 1;
-    }
-    #bottom {
-      display: flex;
-      flex-flow: row nowrap;
-      gap: 1rem;
-    }
-    ::slotted([slot='label']) {
-      flex-grow: 1;
-    }
-    #bottom-fill {
-      flex-grow: 3;
-    }
-  `;
+  static styles = [
+    css`
+      :host {
+        width: 100%;
+      }
+      #card {
+        width: 100%;
+        --padding: 0.125rem;
+      }
+      #container {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0.125rem;
+      }
+      .hl-prefix {
+        width: 1rem;
+      }
+      #top {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+      }
+      ::slotted([slot='search']) {
+        flex-grow: 1;
+      }
+      #bottom {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+      }
+      ::slotted([slot='label']) {
+        flex-grow: 1;
+      }
+      #bottom-fill {
+        flex-grow: 3;
+      }
+    `,
+    highlightColorStyles,
+  ];
+
+  /**
+   * Optional highlight index associated with current search.
+   */
+  @property({ type: Number })
+  public highlight: number | undefined;
 
   render() {
     return html`
       <sl-card id="card" class="card-basic">
         <div id="container">
           <div id="top">
+            <div class="${this.highlightClasses}"></div>
             <slot id="search" name="search"></slot>
             <div>
               <slot name="match-case"></slot>
@@ -55,6 +74,7 @@ export class SearchBoxLayout extends LitElement {
             </div>
           </div>
           <div id="bottom">
+            <div class="${this.highlightClasses}"></div>
             <slot name="label"></slot>
             <div id="bottom-fill"></div>
             <div label="dismiss dialog">
@@ -65,5 +85,13 @@ export class SearchBoxLayout extends LitElement {
         </div>
       </sl-card>
     `;
+  }
+
+  private get highlightClasses(): string {
+    const result = 'hl-prefix';
+    if (!this.highlight) {
+      return `${result} ${noHighlightClassName()}`;
+    }
+    return `${result} ${highlightClassName(this.highlight)}`;
   }
 }

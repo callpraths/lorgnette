@@ -72,6 +72,12 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
   @property()
   public labelPlaceholder = '';
 
+  /**
+   * Optional highlight index associated with current search.
+   */
+  @property({ type: Number })
+  public highlight: number | undefined;
+
   private searchRef: Ref<SlInput> = createRef();
 
   private labelRef: Ref<SlInput> = createRef();
@@ -84,7 +90,7 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
 
   render() {
     return html`
-      <lvi-search-box-layout>
+      <lvi-search-box-layout highlight=${this.highlight ?? nothing}>
         <sl-input
           ${ref(this.searchRef)}
           slot="search"

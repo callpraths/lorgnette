@@ -7,6 +7,12 @@ import { css } from 'lit';
  * https://github.com/shoelace-style/shoelace/blob/current/src/themes/dark.css
  */
 export const highlightColorStyles = css`
+  .highlight-none {
+    background-color: var(--sl-color-gray-500);
+  }
+  .highlight-soft-none {
+    background-color: var(--sl-color-gray-300);
+  }
   .highlight-0 {
     background-color: var(--sl-color-emerald-300);
   }
@@ -76,3 +82,7 @@ export const highlightClassName = (
   opacity: 'solid' | 'soft' = 'solid'
 ): string =>
   `highlight${opacity === 'soft' ? '-soft' : ''}-${ordinal % NUM_HIGHLIGHTS}`;
+
+export const noHighlightClassName = (
+  opacity: 'solid' | 'soft' = 'solid'
+): string => `highlight${opacity === 'soft' ? '-soft' : ''}-none`;

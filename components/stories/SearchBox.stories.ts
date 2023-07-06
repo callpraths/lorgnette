@@ -8,6 +8,8 @@ export default {
 };
 
 export const Default = () => withTheme(html`<lv-search-box></lv-search-box>`);
+export const Highlight = () =>
+  withTheme(html`<lv-search-box highlight="2"></lv-search-box>`);
 export const MatchCase = () =>
   withTheme(html`<lv-search-box matchcase></lv-search-box>`);
 export const MatchRegex = () =>
