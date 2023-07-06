@@ -1,4 +1,4 @@
-import { SearchBoxLayout } from './SearchBoxLayout.js';
+import { SearchBoxLayout } from './internal/SearchBoxLayout.js';
 import { SearchBox, ToggleButton } from './index.js';
 
 window.customElements.define('lv-search-box', SearchBox);

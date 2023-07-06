@@ -2,9 +2,9 @@ import { SlInput } from '@shoelace-style/shoelace';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { Ref, createRef, ref } from 'lit/directives/ref.js';
-import { BaseElement } from './BaseElement.js';
+import { BaseElement } from '../lib/BaseElement.js';
 import { ToggleButton } from './ToggleButton.js';
-import { nonEmptyStringOrDefault } from './utils.js';
+import { nonEmptyStringOrDefault } from '../lib/utils.js';
 
 export type SearchBoxValue = {
   label: string;

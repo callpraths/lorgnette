@@ -1,10 +1,10 @@
 // Patch global type definitions.
-import './global.js';
+import './lib/global.js';
 
-export { SearchBox } from './SearchBox.js';
+export { SearchBox } from './public/SearchBox.js';
 export type {
   SearchBoxAcceptEventData,
   SearchBoxRejectEventData,
   SearchBoxValue,
-} from './SearchBox.js';
-export { ToggleButton } from './ToggleButton.js';
+} from './public/SearchBox.js';
+export { ToggleButton } from './public/ToggleButton.js';

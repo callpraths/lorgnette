@@ -1,4 +1,4 @@
-import { SearchBoxEventData } from './SearchBox.js';
+import { SearchBoxEventData } from '../public/SearchBox.js';
 
 type CustomEventData = SearchBoxEventData;
 
