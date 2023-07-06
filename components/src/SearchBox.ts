@@ -1,4 +1,4 @@
-import { css, html, nothing } from 'lit';
+import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { SlInput } from '@shoelace-style/shoelace';
 import { BaseElement } from './BaseElement.js';
@@ -29,40 +29,6 @@ const DEFAULT_LABEL_PLACEHOLDER = 'Enter an optional label...';
  * @fires search-box-reject - when the user rejects the dialog.
  */
 export class SearchBox extends BaseElement<SearchBoxEventData> {
-  static styles = css`
-    :host {
-      width: 100%;
-    }
-    #card {
-      width: 100%;
-      --padding: 0.125rem;
-    }
-    #container {
-      display: flex;
-      flex-flow: column nowrap;
-      gap: 0.125rem;
-    }
-    #top {
-      display: flex;
-      flex-flow: row nowrap;
-      gap: 1rem;
-    }
-    #search {
-      flex-grow: 1;
-    }
-    #bottom {
-      display: flex;
-      flex-flow: row nowrap;
-      gap: 1rem;
-    }
-    #label {
-      flex-grow: 1;
-    }
-    #bottom-fill {
-      flex-grow: 3;
-    }
-  `;
-
   /**
    * The initial value of label for the search box.
    */
@@ -107,48 +73,50 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
 
   render() {
     return html`
-      <sl-card id="card" class="card-basic">
-        <div id="container">
-          <div id="top">
-            <sl-input
-              id="search"
-              placeholder="${nonEmptyStringOrDefault(
-                this.placeholder,
-                DEFAULT_PLACEHOLDER
-              )}"
-              value="${this.search ?? nothing}"
-            ></sl-input>
-            <div>
-              <lv-toggle-button id="match-case" ?checked=${this.matchCase}
-                >Aa</lv-toggle-button
-              >
-              <lv-toggle-button
-                id="match-whole-word"
-                ?checked=${this.matchWholeWord}
-                ><u>az</u></lv-toggle-button
-              >
-              <lv-toggle-button id="match-regex" ?checked=${this.matchRegex}
-                >.*</lv-toggle-button
-              >
-            </div>
-          </div>
-          <div id="bottom">
-            <sl-input
-              id="label"
-              placeholder=${nonEmptyStringOrDefault(
-                this.labelPlaceholder,
-                DEFAULT_LABEL_PLACEHOLDER
-              )}
-              value="${this.label ?? nothing}"
-            ></sl-input>
-            <div id="bottom-fill"></div>
-            <div label="dismiss dialog">
-              <sl-button variant="text" @click=${this.accept}>✓</sl-button>
-              <sl-button variant="text" @click=${this.reject}>🗙</sl-button>
-            </div>
-          </div>
-        </div>
-      </sl-card>
+      <lvi-search-box-layout>
+        <sl-input
+          id="search"
+          slot="search"
+          placeholder="${nonEmptyStringOrDefault(
+            this.placeholder,
+            DEFAULT_PLACEHOLDER
+          )}"
+          value="${this.search ?? nothing}"
+        ></sl-input>
+        <lv-toggle-button
+          id="match-case"
+          slot="match-case"
+          ?checked=${this.matchCase}
+          >Aa</lv-toggle-button
+        >
+        <lv-toggle-button
+          id="match-whole-word"
+          slot="match-whole-word"
+          ?checked=${this.matchWholeWord}
+          ><u>az</u></lv-toggle-button
+        >
+        <lv-toggle-button
+          id="match-regex"
+          slot="match-regex"
+          ?checked=${this.matchRegex}
+          >.*</lv-toggle-button
+        >
+        <sl-input
+          id="label"
+          slot="label"
+          placeholder=${nonEmptyStringOrDefault(
+            this.labelPlaceholder,
+            DEFAULT_LABEL_PLACEHOLDER
+          )}
+          value="${this.label ?? nothing}"
+        ></sl-input>
+        <sl-button slot="accept" variant="text" @click=${this.accept}
+          >✓</sl-button
+        >
+        <sl-button slot="reject" variant="text" @click=${this.reject}
+          >🗙</sl-button
+        >
+      </lvi-search-box-layout>
     `;
   }
 
@@ -158,15 +126,12 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
    * This value is not reflected onto the DOM.
    */
   public get value(): SearchBoxValue {
-    const search = this.shadowRoot?.querySelector('#search') as SlInput;
-    const label = this.shadowRoot?.querySelector('#label') as SlInput;
-    const matchCase = this.shadowRoot?.querySelector(
-      '#match-case'
-    ) as ToggleButton;
-    const matchRegex = this.shadowRoot?.querySelector(
-      '#match-regex'
-    ) as ToggleButton;
-    const matchWholeWord = this.shadowRoot?.querySelector(
+    const root = this;
+    const search = root.querySelector('#search') as SlInput;
+    const label = root.querySelector('#label') as SlInput;
+    const matchCase = root.querySelector('#match-case') as ToggleButton;
+    const matchRegex = root.querySelector('#match-regex') as ToggleButton;
+    const matchWholeWord = root.querySelector(
       '#match-whole-word'
     ) as ToggleButton;
 
@@ -177,6 +142,13 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
       matchWholeWord: matchWholeWord.value,
       search: search.value,
     };
+  }
+
+  /**
+   * No shadow root - keep all content in light DOM.
+   */
+  protected createRenderRoot() {
+    return this;
   }
 
   private accept() {

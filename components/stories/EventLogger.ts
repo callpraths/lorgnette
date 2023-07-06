@@ -2,6 +2,12 @@ import { html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
 export class EventLogger extends LitElement {
+  /**
+   * Events to log.
+   *
+   * This property is only read once, soon after mount.
+   * Why? Because this is storybook code and I'm lazy.
+   */
   @property({ type: Array })
   events: string[] = [];
 
