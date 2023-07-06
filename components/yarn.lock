@@ -1040,19 +1040,28 @@
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@ctrl/tinycolor/-/tinycolor-3.6.0.tgz"
   integrity sha1-U/pf6cNPruiUaeSPkdUaN2YQi8g=
 
-"@custom-elements-manifest/analyzer@^0.4.17":
-  version "0.4.17"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@custom-elements-manifest/analyzer/-/analyzer-0.4.17.tgz"
-  integrity sha1-1Wg6kLmBtV2Zzii6PHOqk+ajBjM=
+"@custom-elements-manifest/analyzer@^0.8.3":
+  version "0.8.3"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@custom-elements-manifest/analyzer/-/analyzer-0.8.3.tgz#ac60acf4b3c4fffca90d7b7908c0826e5bb725fa"
+  integrity sha1-rGCs9LPE//ypDXt5CMCCblu3Jfo=
   dependencies:
-    "@web/config-loader" "^0.1.3"
-    chokidar "^3.5.2"
-    command-line-args "^5.1.2"
-    comment-parser "^1.2.0"
-    custom-elements-manifest "^1.0.0"
-    debounce "^1.2.1"
-    globby "^11.0.4"
-    typescript "^4.3.2"
+    "@custom-elements-manifest/find-dependencies" "^0.0.5"
+    "@github/catalyst" "^1.6.0"
+    "@web/config-loader" "0.1.3"
+    chokidar "3.5.2"
+    command-line-args "5.1.2"
+    comment-parser "1.2.4"
+    custom-elements-manifest "1.0.0"
+    debounce "1.2.1"
+    globby "11.0.4"
+    typescript "~4.3.2"
+
+"@custom-elements-manifest/find-dependencies@^0.0.5":
+  version "0.0.5"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@custom-elements-manifest/find-dependencies/-/find-dependencies-0.0.5.tgz#ebc11672019de3d52bb8f29f76efe510b8401fbd"
+  integrity sha1-68EWcgGd49UruPKfdu/lELhAH70=
+  dependencies:
+    es-module-lexer "^0.9.3"
 
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
@@ -1104,6 +1113,11 @@
   integrity sha1-CFSjKX6gOJSTI4Hz6hQD+rOm5gI=
   dependencies:
     "@floating-ui/core" "^1.3.1"
+
+"@github/catalyst@^1.6.0":
+  version "1.6.0"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@github/catalyst/-/catalyst-1.6.0.tgz#378734d1d2b6a85af169d7e66c1a2a604bf1e82c"
+  integrity sha1-N4c00dK2qFrxadfmbBoqYEvx6Cw=
 
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
@@ -1935,9 +1949,9 @@
   dependencies:
     errorstacks "^2.2.0"
 
-"@web/config-loader@^0.1.3":
+"@web/config-loader@0.1.3", "@web/config-loader@^0.1.3":
   version "0.1.3"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@web/config-loader/-/config-loader-0.1.3.tgz"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/@web/config-loader/-/config-loader-0.1.3.tgz#8325ea54f75ef2ee7166783e64e66936db25bff7"
   integrity sha1-gyXqVPde8u5xZng+ZOZpNtslv/c=
   dependencies:
     semver "^7.3.4"
@@ -2368,9 +2382,9 @@ array-back@^4.0.1, array-back@^4.0.2:
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/array-back/-/array-back-4.0.2.tgz"
   integrity sha1-gATpmaYnRYa+6yc0IWhlL9uJ+h4=
 
-array-back@^6.2.2:
+array-back@^6.1.2, array-back@^6.2.2:
   version "6.2.2"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/array-back/-/array-back-6.2.2.tgz"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/array-back/-/array-back-6.2.2.tgz#f567d99e9af88a6d3d2f9dfcc21db6f9ba9fd157"
   integrity sha1-9WfZnpr4im09L538wh22+bqf0Vc=
 
 array-buffer-byte-length@^1.0.0:
@@ -2702,7 +2716,22 @@ character-reference-invalid@^1.0.0:
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz"
   integrity sha1-CDMpzaDq4nKrPbvzfpo4LBOvFWA=
 
-chokidar@^3.4.3, chokidar@^3.5.2:
+chokidar@3.5.2:
+  version "3.5.2"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/chokidar/-/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
+  integrity sha1-26OXb8rbAW9m/TZQIdkWANAcHnU=
+  dependencies:
+    anymatch "~3.1.2"
+    braces "~3.0.2"
+    glob-parent "~5.1.2"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.6.0"
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+chokidar@^3.4.3:
   version "3.5.3"
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/chokidar/-/chokidar-3.5.3.tgz"
   integrity sha1-HPN8hwe5Mr0a8a4iwEMuKs0ZA70=
@@ -2839,7 +2868,17 @@ comma-separated-tokens@^1.0.0:
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/comma-separated-tokens/-/comma-separated-tokens-1.0.8.tgz"
   integrity sha1-YyuAthF4Z6FY8QgK1Jiy++fj9eo=
 
-command-line-args@^5.1.1, command-line-args@^5.1.2, command-line-args@^5.2.1:
+command-line-args@5.1.2:
+  version "5.1.2"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/command-line-args/-/command-line-args-5.1.2.tgz#25908e573d2214bc23a8437e3df853b02dffa425"
+  integrity sha1-JZCOVz0iFLwjqEN+PfhTsC3/pCU=
+  dependencies:
+    array-back "^6.1.2"
+    find-replace "^3.0.0"
+    lodash.camelcase "^4.3.0"
+    typical "^4.0.0"
+
+command-line-args@^5.1.1, command-line-args@^5.2.1:
   version "5.2.1"
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/command-line-args/-/command-line-args-5.2.1.tgz"
   integrity sha1-xEwy5DelfXxRFXaWiTxZCenOxC4=
@@ -2889,10 +2928,10 @@ commander@^6.2.0:
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/commander/-/commander-6.2.1.tgz"
   integrity sha1-B5LraC37wyWZm7K4T93duhEKxzw=
 
-comment-parser@^1.2.0:
-  version "1.3.1"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/comment-parser/-/comment-parser-1.3.1.tgz"
-  integrity sha1-PX6jra+TRVlK7e5lY/QiNI8WXBs=
+comment-parser@1.2.4:
+  version "1.2.4"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/comment-parser/-/comment-parser-1.2.4.tgz#489f3ee55dfd184a6e4bffb31baba284453cb760"
+  integrity sha1-SJ8+5V39GEpuS/+zG6uihEU8t2A=
 
 compare-versions@^3.6.0:
   version "3.6.0"
@@ -3013,9 +3052,9 @@ css-selector-parser@^1.0.0:
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/css-selector-parser/-/css-selector-parser-1.4.1.tgz"
   integrity sha1-A/nLioHD5assUWhFV9Wq9tJWl1k=
 
-custom-elements-manifest@^1.0.0:
+custom-elements-manifest@1.0.0:
   version "1.0.0"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/custom-elements-manifest/-/custom-elements-manifest-1.0.0.tgz"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/custom-elements-manifest/-/custom-elements-manifest-1.0.0.tgz#b35c2129076a1dc9f95d720c6f7b5b71a857274b"
   integrity sha1-s1whKQdqHcn5XXIMb3tbcahXJ0s=
 
 date-fns@^2.0.1:
@@ -3025,9 +3064,9 @@ date-fns@^2.0.1:
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-debounce@^1.2.0, debounce@^1.2.1:
+debounce@1.2.1, debounce@^1.2.0:
   version "1.2.1"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/debounce/-/debounce-1.2.1.tgz"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
   integrity sha1-OIgdj0FmpcWEgCDBGCe4NLyz4KU=
 
 debug@4, debug@4.3.4, debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0, debug@^4.3.2, debug@^4.3.4:
@@ -3656,9 +3695,9 @@ fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz"
   integrity sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=
 
-fast-glob@^3.2.9:
+fast-glob@^3.1.1, fast-glob@^3.2.9:
   version "3.3.0"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/fast-glob/-/fast-glob-3.3.0.tgz"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/fast-glob/-/fast-glob-3.3.0.tgz#7c40cb491e1e2ed5664749e87bfb516dbe8727c0"
   integrity sha1-fEDLSR4eLtVmR0noe/tRbb6HJ8A=
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
@@ -3920,7 +3959,19 @@ globalthis@^1.0.3:
   dependencies:
     define-properties "^1.1.3"
 
-globby@^11.0.1, globby@^11.0.4, globby@^11.1.0:
+globby@11.0.4:
+  version "11.0.4"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/globby/-/globby-11.0.4.tgz#2cbaff77c2f2a62e71e9b2813a67b97a3a3001a5"
+  integrity sha1-LLr/d8Lypi5x6bKBOme5ejowAaU=
+  dependencies:
+    array-union "^2.1.0"
+    dir-glob "^3.0.1"
+    fast-glob "^3.1.1"
+    ignore "^5.1.4"
+    merge2 "^1.3.0"
+    slash "^3.0.0"
+
+globby@^11.0.1, globby@^11.1.0:
   version "11.1.0"
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/globby/-/globby-11.1.0.tgz"
   integrity sha1-vUvpi7BC+D15b344EZkfvoKg00s=
@@ -4265,9 +4316,9 @@ ieee754@^1.1.13:
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/ieee754/-/ieee754-1.2.1.tgz"
   integrity sha1-jrehCmP/8l0VpXsAFYbRd9Gw01I=
 
-ignore@^5.2.0:
+ignore@^5.1.4, ignore@^5.2.0:
   version "5.2.4"
-  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/ignore/-/ignore-5.2.4.tgz"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha1-opHAxheP8blgvv5H/N7DAWdKYyQ=
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
@@ -6691,10 +6742,15 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typescript@^4.3.2, typescript@^4.5.2:
+typescript@^4.5.2:
   version "4.9.5"
   resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/typescript/-/typescript-4.9.5.tgz"
   integrity sha1-CVl5+bzA0J2jJNWNA86Pg3TL5lo=
+
+typescript@~4.3.2:
+  version "4.3.5"
+  resolved "https://domoreexp.pkgs.visualstudio.com/_packaging/npm-mirror/npm/registry/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha1-TRw3zBbok5c8RaBohrcRMjTxGfQ=
 
 typical@^4.0.0:
   version "4.0.0"
