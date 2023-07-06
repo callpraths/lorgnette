@@ -1,9 +1,10 @@
+import { SlInput } from '@shoelace-style/shoelace';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
-import { SlInput } from '@shoelace-style/shoelace';
+import { Ref, createRef, ref } from 'lit/directives/ref.js';
 import { BaseElement } from './BaseElement.js';
-import { nonEmptyStringOrDefault } from './utils.js';
 import { ToggleButton } from './ToggleButton.js';
+import { nonEmptyStringOrDefault } from './utils.js';
 
 export type SearchBoxValue = {
   label: string;
@@ -71,11 +72,21 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
   @property()
   public labelPlaceholder = '';
 
+  private searchRef: Ref<SlInput> = createRef();
+
+  private labelRef: Ref<SlInput> = createRef();
+
+  private matchCaseRef: Ref<ToggleButton> = createRef();
+
+  private matchRegexRef: Ref<ToggleButton> = createRef();
+
+  private matchWholeWordRef: Ref<ToggleButton> = createRef();
+
   render() {
     return html`
       <lvi-search-box-layout>
         <sl-input
-          id="search"
+          ${ref(this.searchRef)}
           slot="search"
           placeholder="${nonEmptyStringOrDefault(
             this.placeholder,
@@ -84,25 +95,25 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
           value="${this.search ?? nothing}"
         ></sl-input>
         <lv-toggle-button
-          id="match-case"
+          ${ref(this.matchCaseRef)}
           slot="match-case"
           ?checked=${this.matchCase}
           >Aa</lv-toggle-button
         >
         <lv-toggle-button
-          id="match-whole-word"
+          ${ref(this.matchWholeWordRef)}
           slot="match-whole-word"
           ?checked=${this.matchWholeWord}
           ><u>az</u></lv-toggle-button
         >
         <lv-toggle-button
-          id="match-regex"
+          ${ref(this.matchRegexRef)}
           slot="match-regex"
           ?checked=${this.matchRegex}
           >.*</lv-toggle-button
         >
         <sl-input
-          id="label"
+          ${ref(this.labelRef)}
           slot="label"
           placeholder=${nonEmptyStringOrDefault(
             this.labelPlaceholder,
@@ -126,21 +137,12 @@ export class SearchBox extends BaseElement<SearchBoxEventData> {
    * This value is not reflected onto the DOM.
    */
   public get value(): SearchBoxValue {
-    const root = this;
-    const search = root.querySelector('#search') as SlInput;
-    const label = root.querySelector('#label') as SlInput;
-    const matchCase = root.querySelector('#match-case') as ToggleButton;
-    const matchRegex = root.querySelector('#match-regex') as ToggleButton;
-    const matchWholeWord = root.querySelector(
-      '#match-whole-word'
-    ) as ToggleButton;
-
     return {
-      label: label.value,
-      matchCase: matchCase.value,
-      matchRegex: matchRegex.value,
-      matchWholeWord: matchWholeWord.value,
-      search: search.value,
+      label: this.labelRef.value?.value ?? '',
+      matchCase: !!this.matchCaseRef.value?.value,
+      matchRegex: !!this.matchRegexRef.value?.value,
+      matchWholeWord: !!this.matchWholeWordRef.value?.value,
+      search: this.searchRef.value?.value ?? '',
     };
   }
 

@@ -26,7 +26,7 @@ export class SearchBoxLayout extends LitElement {
       flex-flow: row nowrap;
       gap: 1rem;
     }
-    ::slotted(#search) {
+    ::slotted([slot='search']) {
       flex-grow: 1;
     }
     #bottom {
@@ -34,7 +34,7 @@ export class SearchBoxLayout extends LitElement {
       flex-flow: row nowrap;
       gap: 1rem;
     }
-    ::slotted(#label) {
+    ::slotted([slot='label']) {
       flex-grow: 1;
     }
     #bottom-fill {
@@ -49,17 +49,17 @@ export class SearchBoxLayout extends LitElement {
           <div id="top">
             <slot id="search" name="search"></slot>
             <div>
-              <slot id="match-case" name="match-case"></slot>
-              <slot id="match-whole-word" name="match-whole-word"></slot>
-              <slot id="match-regex" name="match-regex"></slot>
+              <slot name="match-case"></slot>
+              <slot name="match-whole-word"></slot>
+              <slot name="match-regex"></slot>
             </div>
           </div>
           <div id="bottom">
-            <slot id="label" name="label"></slot>
+            <slot name="label"></slot>
             <div id="bottom-fill"></div>
             <div label="dismiss dialog">
-              <slot id="accept" name="accept"></slot>
-              <slot id="reject" name="reject"></slot>
+              <slot name="accept"></slot>
+              <slot name="reject"></slot>
             </div>
           </div>
         </div>
