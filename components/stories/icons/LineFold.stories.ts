@@ -3,7 +3,7 @@ import '../../src/define.js';
 import { withCard } from '../utils.js';
 
 export default {
-  title: 'Icons/LineFold',
+  title: 'Internal/Icons/LineFold',
   component: 'lvi-icon-line-fold',
 };
 
