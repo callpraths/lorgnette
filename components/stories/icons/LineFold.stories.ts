@@ -8,14 +8,24 @@ export default {
 };
 
 export const Default = () =>
-  withCard(html`<lvi-icon-line-fold></lvi-icon-line-fold>`);
+  withCard(
+    html`Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      <lvi-icon-line-fold></lvi-icon-line-fold>`
+  );
 export const Expanded = () =>
-  withCard(html`<lvi-icon-line-fold expanded></lvi-icon-line-fold>`);
+  withCard(
+    html`Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      <lvi-icon-line-fold expanded></lvi-icon-line-fold>`
+  );
 export const Highlighted = () =>
-  withCard(html`<lvi-icon-line-fold highlighted></lvi-icon-line-fold>`);
+  withCard(
+    html`Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      <lvi-icon-line-fold highlighted></lvi-icon-line-fold>`
+  );
 
 // This should stay neutral.
 export const FoldedHighlight = () =>
   withCard(
-    html`<lvi-icon-line-fold expanded highlighted></lvi-icon-line-fold>`
+    html`Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      <lvi-icon-line-fold expanded highlighted></lvi-icon-line-fold>`
   );

@@ -21,4 +21,6 @@ export const withEventLog = (
 >`;
 
 export const withCard = (inner: TemplateResult): TemplateResult =>
-  withTheme(html`<sl-card class="card-basic">${inner}</sl-card>`);
+  withTheme(
+    html`<sl-card class="card-basic" style="color: white">${inner}</sl-card>`
+  );

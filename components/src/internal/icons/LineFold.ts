@@ -7,9 +7,12 @@ import { property } from 'lit/decorators.js';
  */
 export class LineFold extends LitElement {
   static styles = css`
-    .folded {
+    .main {
       width: 1rem;
       height: 1rem;
+      display: inline-block;
+    }
+    .folded {
       clip-path: polygon(
         100% 50%,
         100% 0%,
@@ -24,8 +27,6 @@ export class LineFold extends LitElement {
       );
     }
     .unfolded {
-      width: 1rem;
-      height: 1rem;
       clip-path: polygon(0% 0%, 100% 0%, 50% 70%);
     }
     .no-highlights {
@@ -61,7 +62,7 @@ export class LineFold extends LitElement {
   }
 
   private getClasses() {
-    const classes = [];
+    const classes = ['main'];
     if (this.expanded) {
       classes.push('unfolded');
     } else {
