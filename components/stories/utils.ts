@@ -19,3 +19,6 @@ export const withEventLog = (
 ): TemplateResult => html` <sbx-event-logger .events=${events}
   >${inner}</sbx-event-logger
 >`;
+
+export const withCard = (inner: TemplateResult): TemplateResult =>
+  withTheme(html`<sl-card class="card-basic">${inner}</sl-card>`);

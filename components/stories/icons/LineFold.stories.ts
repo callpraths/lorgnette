@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import '../../src/define.js';
-import { withTheme } from '../utils.js';
+import { withCard } from '../utils.js';
 
 export default {
   title: 'Icons/LineFold',
@@ -8,14 +8,14 @@ export default {
 };
 
 export const Unfolded = () =>
-  withTheme(html`<lvi-icon-line-fold></lvi-icon-line-fold>`);
+  withCard(html`<lvi-icon-line-fold></lvi-icon-line-fold>`);
 export const Folded = () =>
-  withTheme(html`<lvi-icon-line-fold folded></lvi-icon-line-fold>`);
+  withCard(html`<lvi-icon-line-fold folded></lvi-icon-line-fold>`);
 export const Highlight = () =>
-  withTheme(
+  withCard(
     html`<lvi-icon-line-fold highlight="3" folded></lvi-icon-line-fold>`
   );
 export const MultipleHighlights = () =>
-  withTheme(
+  withCard(
     html`<lvi-icon-line-fold highlight="multiple" folded></lvi-icon-line-fold>`
   );
