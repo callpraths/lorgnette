@@ -2,9 +2,9 @@ import { SlInput } from '@shoelace-style/shoelace';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { Ref, createRef, ref } from 'lit/directives/ref.js';
-import { BaseElement } from '../lib/BaseElement.js';
 import { ToggleButton } from './ToggleButton.js';
 import { nonEmptyStringOrDefault } from '../lib/utils.js';
+import { BaseUnstyledElement } from '../lib/BaseUnstyledElement.js';
 
 export type SearchBoxValue = {
   label: string;
@@ -29,7 +29,7 @@ const DEFAULT_LABEL_PLACEHOLDER = 'Enter an optional label...';
  * @fires search-box-accept - when the user accepts the dialog.
  * @fires search-box-reject - when the user rejects the dialog.
  */
-export class SearchBox extends BaseElement<SearchBoxEventData> {
+export class SearchBox extends BaseUnstyledElement<SearchBoxEventData> {
   /**
    * The initial value of label for the search box.
    */

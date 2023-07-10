@@ -3,7 +3,7 @@ import { LitElement } from 'lit';
 /**
  * A base class for custom elements.
  */
-export class BaseElement<T> extends LitElement {
+export class BaseElement<T = unknown> extends LitElement {
   /**
    * Type safe method to emit custom events.
    */
