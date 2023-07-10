@@ -7,15 +7,15 @@ export default {
   component: 'lvi-icon-line-fold',
 };
 
-export const Unfolded = () =>
+export const Default = () =>
   withCard(html`<lvi-icon-line-fold></lvi-icon-line-fold>`);
-export const Folded = () =>
-  withCard(html`<lvi-icon-line-fold folded></lvi-icon-line-fold>`);
-export const Highlight = () =>
+export const Expanded = () =>
+  withCard(html`<lvi-icon-line-fold expanded></lvi-icon-line-fold>`);
+export const Highlighted = () =>
+  withCard(html`<lvi-icon-line-fold highlighted></lvi-icon-line-fold>`);
+
+// This should stay neutral.
+export const FoldedHighlight = () =>
   withCard(
-    html`<lvi-icon-line-fold highlight="3" folded></lvi-icon-line-fold>`
-  );
-export const MultipleHighlights = () =>
-  withCard(
-    html`<lvi-icon-line-fold highlight="multiple" folded></lvi-icon-line-fold>`
+    html`<lvi-icon-line-fold expanded highlighted></lvi-icon-line-fold>`
   );
