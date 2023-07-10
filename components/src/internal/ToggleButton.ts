@@ -1,6 +1,5 @@
-import { html } from 'lit';
+import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { BaseUnstyledElement } from '../lib/BaseUnstyledElement.js';
 
 /**
  * A button that remembers its toggle state.
@@ -10,8 +9,10 @@ import { BaseUnstyledElement } from '../lib/BaseUnstyledElement.js';
  * its state.
  *
  * @slot - The button's content.
+ *
+ * @internal
  */
-export class ToggleButton extends BaseUnstyledElement {
+export class ToggleButton extends LitElement {
   /**
    * The initial toggle state of the button.
    */

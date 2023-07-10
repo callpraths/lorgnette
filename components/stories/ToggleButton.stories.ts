@@ -3,21 +3,21 @@ import '../src/define.js';
 import { withTheme, Story } from './utils.js';
 
 export default {
-  title: 'ToggleButton',
-  component: 'lv-toggle-button',
+  title: 'Internal/ToggleButton',
+  component: 'lvi-toggle-button',
 };
 
 const UncheckedTemplate: Story = () =>
   withTheme(html`
     <sl-card class="card-basic">
-      <lv-toggle-button> Toggle me! </lv-toggle-button>
+      <lvi-toggle-button> Toggle me! </lvi-toggle-button>
     </sl-card>
   `);
 
 const CheckedTemplate: Story = () =>
   withTheme(html`
     <sl-card class="card-basic">
-      <lv-toggle-button checked> Toggle me! </lv-toggle-button>
+      <lvi-toggle-button checked> Toggle me! </lvi-toggle-button>
     </sl-card>
   `);
 

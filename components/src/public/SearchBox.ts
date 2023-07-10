@@ -2,7 +2,7 @@ import { SlInput } from '@shoelace-style/shoelace';
 import { html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { Ref, createRef, ref } from 'lit/directives/ref.js';
-import { ToggleButton } from './ToggleButton.js';
+import { ToggleButton } from '../internal/ToggleButton.js';
 import { nonEmptyStringOrDefault } from '../lib/utils.js';
 import { BaseUnstyledElement } from '../lib/BaseUnstyledElement.js';
 
@@ -100,23 +100,23 @@ export class SearchBox extends BaseUnstyledElement<SearchBoxEventData> {
           )}"
           value="${this.search ?? nothing}"
         ></sl-input>
-        <lv-toggle-button
+        <lvi-toggle-button
           ${ref(this.matchCaseRef)}
           slot="match-case"
           ?checked=${this.matchCase}
-          >Aa</lv-toggle-button
+          >Aa</lvi-toggle-button
         >
-        <lv-toggle-button
+        <lvi-toggle-button
           ${ref(this.matchWholeWordRef)}
           slot="match-whole-word"
           ?checked=${this.matchWholeWord}
-          ><u>az</u></lv-toggle-button
+          ><u>az</u></lvi-toggle-button
         >
-        <lv-toggle-button
+        <lvi-toggle-button
           ${ref(this.matchRegexRef)}
           slot="match-regex"
           ?checked=${this.matchRegex}
-          >.*</lv-toggle-button
+          >.*</lvi-toggle-button
         >
         <sl-input
           ${ref(this.labelRef)}

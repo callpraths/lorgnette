@@ -3,7 +3,7 @@ import '../src/define.js';
 import { withTheme } from './utils.js';
 
 export default {
-  title: 'HighlightPalette',
+  title: 'Internal/HighlightPalette',
   component: 'lvi-highlight-palette',
 };
 

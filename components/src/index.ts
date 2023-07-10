@@ -7,4 +7,4 @@ export type {
   SearchBoxRejectEventData,
   SearchBoxValue,
 } from './public/SearchBox.js';
-export { ToggleButton } from './public/ToggleButton.js';
+export { ToggleButton } from './internal/ToggleButton.js';
