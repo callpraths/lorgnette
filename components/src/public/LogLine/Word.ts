@@ -12,7 +12,13 @@ export class LogLineWord extends BaseElement {
   @property({ type: Number })
   highlight: number | undefined;
 
+  /**
+   * If set, the word is inert and cannot be interacted with.
+   */
+  @property({ type: Boolean })
+  disabled: boolean = false;
+
   render() {
-    return html` <slot></slot> `;
+    return html`<slot></slot> `;
   }
 }

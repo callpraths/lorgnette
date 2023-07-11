@@ -4,6 +4,9 @@ import { BaseElement } from '../lib/BaseElement.js';
 /**
  * A line of text in the log.
  *
+ * @slot file - The file name. Must be of type {@link LogLineFile}.
+ * @slot timestamp - The timestamp. Must be of type {@link LogLineTimestamp}.
+ * @slot - The default slot contains the log's text. Must be of type {@link LogLineText}.
  * @fires log-line-text-expanded - Fired when the text is expanded.
  * @fires log-line-text-folded - Fired when the text is folded.
  */
@@ -12,7 +15,8 @@ export class LogLine extends BaseElement {
     return html`
       <slot name="file"></slot>
       <slot name="timestamp"></slot>
-      <span id="text"><slot name="text"></slot></span>
+      <!-- default slot: text -->
+      <slot></slot>
       <!-- add line fold button here -->
     `;
   }
