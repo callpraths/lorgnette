@@ -1,4 +1,4 @@
-import { html } from 'lit';
+import { css, html } from 'lit';
 import { BaseElement } from '../lib/BaseElement.js';
 
 /**
@@ -11,6 +11,18 @@ import { BaseElement } from '../lib/BaseElement.js';
  * @fires log-line-text-folded - Fired when the text is folded.
  */
 export class LogLine extends BaseElement {
+  static styles = css`
+    :host {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 0.25rem;
+    }
+    ::slotted(*) {
+      display: inline-block;
+    }
+  `;
+
   render() {
     return html`
       <slot name="file"></slot>

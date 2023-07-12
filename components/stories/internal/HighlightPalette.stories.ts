@@ -1,6 +1,6 @@
 import { html } from 'lit';
-import '../src/define.js';
-import { withTheme } from './utils.js';
+import '../../src/define.js';
+import { withTheme } from '../utils.js';
 
 export default {
   title: 'Internal/HighlightPalette',

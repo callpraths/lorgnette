@@ -19,6 +19,6 @@ export class LogLineWord extends BaseElement {
   disabled: boolean = false;
 
   render() {
-    return html`<slot></slot> `;
+    return html`<slot></slot>`;
   }
 }

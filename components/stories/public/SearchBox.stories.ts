@@ -1,9 +1,9 @@
 import { html } from 'lit';
-import '../src/define.js';
-import { withEventLog, withTheme } from './utils.js';
+import '../../src/define.js';
+import { withEventLog, withTheme } from '../utils.js';
 
 export default {
-  title: 'SearchBox',
+  title: 'Public/SearchBox',
   component: 'lv-search-box',
 };
 

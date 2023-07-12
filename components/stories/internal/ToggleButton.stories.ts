@@ -1,6 +1,6 @@
 import { html } from 'lit';
-import '../src/define.js';
-import { withTheme, Story } from './utils.js';
+import '../../src/define.js';
+import { withTheme, Story } from '../utils.js';
 
 export default {
   title: 'Internal/ToggleButton',

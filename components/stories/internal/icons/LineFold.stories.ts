@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
-import '../../src/define.js';
+import '../../../src/define.js';
 import { property } from 'lit/decorators.js';
-import { withCard } from '../utils.js';
+import { withCard } from '../../utils.js';
 
 export default {
   title: 'Internal/Icons/LineFold',

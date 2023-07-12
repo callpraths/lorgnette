@@ -12,6 +12,6 @@ export class LogLineText extends BaseElement {
   expanded: boolean = false;
 
   render() {
-    return html` <slot></slot> `;
+    return html`<slot></slot>`;
   }
 }
