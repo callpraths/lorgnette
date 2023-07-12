@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import '../../../src/define.js';
-import { withCard } from '../../utils.js';
+import { withTheme } from '../../utils.js';
 
 export default {
   title: 'Public/LogLine/File',
@@ -8,7 +8,7 @@ export default {
 };
 
 export const Default = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file
         slot="file"
@@ -22,7 +22,7 @@ export const Default = () =>
   `);
 
 export const NoFile = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file slot="file"></lv-log-line-file>
       <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
@@ -33,7 +33,7 @@ export const NoFile = () =>
   `);
 
 export const WindowsPath = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file
         slot="file"
@@ -47,7 +47,7 @@ export const WindowsPath = () =>
   `);
 
 export const BasePath = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file slot="file" path="SearchBox.ts"></lv-log-line-file>
       <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
@@ -58,7 +58,7 @@ export const BasePath = () =>
   `);
 
 export const Fit = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file
         slot="file"

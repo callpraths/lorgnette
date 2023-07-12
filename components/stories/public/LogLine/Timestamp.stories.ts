@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import '../../../src/define.js';
-import { withCard } from '../../utils.js';
+import { withTheme } from '../../utils.js';
 
 export default {
   title: 'Public/LogLine/Timestamp',
@@ -8,7 +8,7 @@ export default {
 };
 
 export const Default = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file slot="file" path="a"></lv-log-line-file>
       <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
@@ -19,7 +19,7 @@ export const Default = () =>
   `);
 
 export const None = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file slot="file" path="a"></lv-log-line-file>
       <lv-log-line-timestamp></lv-log-line-timestamp>
@@ -30,7 +30,7 @@ export const None = () =>
   `);
 
 export const Long = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file slot="file" path="a"></lv-log-line-file>
       <lv-log-line-timestamp
@@ -44,7 +44,7 @@ export const Long = () =>
   `);
 
 export const Relative = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file slot="file" path="a"></lv-log-line-file>
       <lv-log-line-timestamp

@@ -7,11 +7,14 @@ export interface Story<T = unknown> {
   argTypes?: Record<string, unknown>;
 }
 
-export const withTheme = (inner: TemplateResult): TemplateResult => html` <div
-  class="sl-theme-dark"
->
-  ${inner}
-</div>`;
+export const withTheme = (
+  inner: TemplateResult
+): TemplateResult => html` <style>
+    .sbx-theme-dark {
+      color: white;
+    }
+  </style>
+  <div class="sl-theme-dark sbx-theme-dark">${inner}</div>`;
 
 export const withEventLog = (
   inner: TemplateResult,

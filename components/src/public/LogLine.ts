@@ -17,9 +17,14 @@ export class LogLine extends BaseElement {
       flex-direction: row;
       flex-wrap: nowrap;
       gap: 0.25rem;
+      width: 100%;
+      background-color: var(--sl-color-neutral-50);
     }
     ::slotted(*) {
       display: inline-block;
+    }
+    ::slotted(vl-log-line-text) {
+      flex-grow: 1;
     }
   `;
 

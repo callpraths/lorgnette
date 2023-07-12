@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import '../../src/define.js';
-import { withCard } from '../utils.js';
+import { withTheme } from '../utils.js';
 
 export default {
   title: 'Public/LogLine',
@@ -8,7 +8,7 @@ export default {
 };
 
 export const Default = () =>
-  withCard(html`
+  withTheme(html`
     <lv-log-line>
       <lv-log-line-file
         slot="file"
