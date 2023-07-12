@@ -55,9 +55,9 @@ export class LogLineTimestamp extends BaseElement {
       #container {
         border-right: 0.125rem solid var(--sl-color-gray-500);
         padding-right: 0.5rem;
-        overflow: hidden;
-        white-space: nowrap;
-        word-break: break-all;
+        overflow: clip;
+        text-overflow: ellipsis;
+        height: 1em;
       }
     `,
     // Based on heuristics. The exact width required depends on the font and language.

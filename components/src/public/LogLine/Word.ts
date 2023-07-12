@@ -1,4 +1,4 @@
-import { html } from 'lit';
+import { css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/BaseElement.js';
 
@@ -9,6 +9,14 @@ import { BaseElement } from '../../lib/BaseElement.js';
  * @fires - log-line-word-click - Fired when the word is clicked.
  */
 export class LogLineWord extends BaseElement {
+  static styles = css`
+    :host {
+      overflow: clip;
+      text-overflow: ellipsis;
+      overflow-wrap: break-word;
+    }
+  `;
+
   @property({ type: Number })
   highlight: number | undefined;
 

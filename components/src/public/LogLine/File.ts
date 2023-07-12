@@ -15,8 +15,9 @@ export class LogLineFile extends BaseElement {
     :host {
       border-right: 0.125rem solid var(--sl-color-gray-500);
       padding-right: 0.25rem;
-      overflow: hidden;
+      overflow: clip;
       text-overflow: ellipsis;
+      height: 1em;
     }
   `;
 

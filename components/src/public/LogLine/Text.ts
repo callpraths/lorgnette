@@ -9,19 +9,32 @@ import { BaseElement } from '../../lib/BaseElement.js';
  */
 export class LogLineText extends BaseElement {
   static styles = css`
+    #container {
+      overflow: clip;
+    }
     .folded {
-      overflow: hidden;
-      white-space: nowrap;
-      word-break: break-all;
+      height: 1em;
     }
     .unfolded {
+      overflow-wrap: anywhere;
+      word-break: break-all;
     }
   `;
 
+  /**
+   * Whether the text is expanded or not.
+   *
+   * NB: This attribute is managed by the containing {@link LogLine} element.
+   */
   @property({ type: Boolean })
   expanded: boolean = false;
 
   render() {
-    return html`<div id="container"><slot></slot></div>`;
+    return html`<div
+      id="container"
+      class="${this.expanded ? 'unfolded' : 'folded'}"
+    >
+      <slot></slot>
+    </div>`;
   }
 }

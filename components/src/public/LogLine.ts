@@ -1,4 +1,5 @@
 import { css, html } from 'lit';
+import { property } from 'lit/decorators.js';
 import { BaseElement } from '../lib/BaseElement.js';
 
 /**
@@ -17,16 +18,33 @@ export class LogLine extends BaseElement {
       flex-direction: row;
       flex-wrap: nowrap;
       gap: 0.25rem;
-      width: 100%;
       background-color: var(--sl-color-neutral-50);
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+      padding-top: 0.0625;
+      padding-bottom: 0.0625;
     }
     ::slotted(*) {
       display: inline-block;
+    }
+    ::slotted([slot='file']) {
+      flex-shrink: 0;
+    }
+    ::slotted([slot='timestamp']) {
+      flex-shrink: 0;
     }
     ::slotted(vl-log-line-text) {
       flex-grow: 1;
     }
   `;
+
+  /**
+   * Initial value of whether the text is expanded or not.
+   *
+   * Only effective if the contained text overflows the available space.
+   */
+  @property({ type: Boolean })
+  expanded: boolean = false;
 
   render() {
     return html`
