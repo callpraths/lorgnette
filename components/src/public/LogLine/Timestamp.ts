@@ -37,11 +37,11 @@ const formatDuration = (duration: number): TemplateResult => {
   const seconds = Math.floor((durationAbs % MILLS_IN_MINUTE) / MILLS_IN_SECOND);
   const milliseconds = durationAbs % MILLS_IN_SECOND;
 
-  const prefix = duration > 0 ? '+ ' : '- ';
+  const prefix = duration >= 0 ? '+' : '-';
   if (days > 0) {
-    return html`&gt; ${prefix}1d`;
+    return html`${prefix} &gt;1d`;
   }
-  return html`${prefix}${hours}h:${minutes}m:${seconds}.${milliseconds}s`;
+  return html`${prefix} ${hours}h:${minutes}m:${seconds}.${milliseconds}s`;
 };
 
 /**
@@ -50,12 +50,29 @@ const formatDuration = (duration: number): TemplateResult => {
  * @fires log-line-timestamp-click - Fired when the timestamp is clicked.
  */
 export class LogLineTimestamp extends BaseElement {
-  static styles = css`
-    :host {
-      border-right: 0.125rem solid var(--sl-color-gray-500);
-      padding-right: 0.5rem;
-    }
-  `;
+  static styles = [
+    css`
+      #container {
+        border-right: 0.125rem solid var(--sl-color-gray-500);
+        padding-right: 0.5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        word-break: break-all;
+      }
+    `,
+    // Based on heuristics. The exact width required depends on the font and language.
+    css`
+      .long {
+        width: 24ch;
+      }
+      .short {
+        width: 12ch;
+      }
+      .relative {
+        width: 20ch;
+      }
+    `,
+  ];
 
   /**
    * The width of the timestamp to display, in characters.
@@ -91,6 +108,22 @@ export class LogLineTimestamp extends BaseElement {
   value: Date | undefined;
 
   render() {
+    return html`<div id="container" class="${this.getContainerClass()}">
+      ${this.renderContent()}
+    </div>`;
+  }
+
+  private getContainerClass(): string {
+    if (this.origin !== undefined) {
+      return 'relative';
+    }
+    if (this.format === 'long') {
+      return 'long';
+    }
+    return 'short';
+  }
+
+  private renderContent(): TemplateResult {
     if (this.value === undefined) {
       return html``;
     }
@@ -101,11 +134,13 @@ export class LogLineTimestamp extends BaseElement {
   }
 
   private formatTimestamp(timestamp: Date): TemplateResult {
+    const hourPart = html`${timestamp.getUTCHours()}:${timestamp.getUTCMinutes()}:${timestamp.getUTCSeconds()}.${timestamp.getUTCMilliseconds()}Z`;
     switch (this.format) {
       case 'long':
-        return html`${timestamp.toUTCString()}`;
+        return html`${timestamp.getUTCFullYear()}-${timestamp.getUTCMonth()}-${timestamp.getUTCDate()}
+        ${hourPart}`;
       default:
-        return html`${timestamp.getUTCHours()}:${timestamp.getUTCMinutes()}:${timestamp.getUTCSeconds()}.${timestamp.getUTCMilliseconds()}`;
+        return hourPart;
     }
   }
 }
