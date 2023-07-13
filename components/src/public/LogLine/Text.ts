@@ -13,7 +13,7 @@ export class LogLineText extends BaseElement {
       overflow: clip;
     }
     .folded {
-      height: 1em;
+      white-space: nowrap;
     }
     .unfolded {
       overflow-wrap: anywhere;

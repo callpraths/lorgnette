@@ -8,8 +8,7 @@ import { BaseElement } from '../lib/BaseElement.js';
  * @slot file - The file name. Must be of type {@link LogLineFile}.
  * @slot timestamp - The timestamp. Must be of type {@link LogLineTimestamp}.
  * @slot - The default slot contains the log's text. Must be of type {@link LogLineText}.
- * @fires log-line-text-expanded - Fired when the text is expanded.
- * @fires log-line-text-folded - Fired when the text is folded.
+ * @fires log-line-text-fold-changed - Fired when the text is expanded or collapsed.
  */
 export class LogLine extends BaseElement {
   static styles = css`
