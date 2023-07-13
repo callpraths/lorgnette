@@ -9,7 +9,7 @@ import { BaseElement } from '../../lib/BaseElement.js';
  */
 export class LogLineText extends BaseElement {
   static styles = css`
-    #container {
+    :host {
       overflow: clip;
     }
     .folded {
@@ -30,10 +30,7 @@ export class LogLineText extends BaseElement {
   expanded: boolean = false;
 
   render() {
-    return html`<div
-      id="container"
-      class="${this.expanded ? 'unfolded' : 'folded'}"
-    >
+    return html`<div class="${this.expanded ? 'unfolded' : 'folded'}">
       <slot></slot>
     </div>`;
   }

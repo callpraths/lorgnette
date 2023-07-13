@@ -88,7 +88,7 @@ const logLine = (expanded: boolean, words: TemplateResult[]) =>
   `;
 
 const withBox = (content: TemplateResult) =>
-  withTheme(html`<div style="width: 50rem; overflow: clip;">${content}</div>`);
+  withTheme(html`<div style="width: 50rem;">${content}</div>`);
 
 export const Empty = () => withBox(logLine(false, []));
 export const EmptyExpanded = () => withBox(logLine(true, []));
