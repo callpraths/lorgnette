@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { state } from 'lit/decorators.js';
 import { BaseElement } from '../lib/BaseElement.js';
 
 /**
@@ -37,13 +37,8 @@ export class LogLine extends BaseElement {
     }
   `;
 
-  /**
-   * Initial value of whether the text is expanded or not.
-   *
-   * Only effective if the contained text overflows the available space.
-   */
-  @property({ type: Boolean })
-  expanded: boolean = false;
+  @state()
+  private overflow: 'none' | 'expanded' | 'collapsed' = 'none';
 
   render() {
     return html`

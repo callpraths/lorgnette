@@ -31,9 +31,7 @@ export const Search = () =>
 export const Label = () =>
   withTheme(html`<lv-search-box label="Custom label"></lv-search-box>`);
 export const Events = () =>
-  withTheme(
-    withEventLog(html`<lv-search-box></lv-search-box>`, [
-      'search-box-accept',
-      'search-box-reject',
-    ])
-  );
+  withEventLog(withTheme(html`<lv-search-box></lv-search-box>`), [
+    'search-box-accept',
+    'search-box-reject',
+  ]);

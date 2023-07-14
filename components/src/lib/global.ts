@@ -1,6 +1,7 @@
+import { LogLineTextEventData } from '../public/LogLine/Text.js';
 import { SearchBoxEventData } from '../public/SearchBox.js';
 
-type CustomEventData = SearchBoxEventData;
+type CustomEventData = SearchBoxEventData & LogLineTextEventData;
 
 declare global {
   interface HTMLElement {
