@@ -8,8 +8,8 @@ import { property } from 'lit/decorators.js';
 export class LineFold extends LitElement {
   static styles = css`
     .main {
-      width: 1rem;
-      height: 1rem;
+      width: 0.75rem;
+      height: 0.75rem;
       display: inline-block;
     }
     .folded {
