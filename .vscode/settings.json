@@ -1,3 +1,6 @@
 {
-  "files.eol": "\r\n"
+  "files.eol": "\r\n",
+  "html.customData": [
+    "./node_modules/@shoelace-style/shoelace/dist/vscode.html-custom-data.json"
+  ]
 }

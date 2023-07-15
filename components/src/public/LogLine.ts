@@ -32,21 +32,22 @@ export class LogLine extends BaseElement {
     ::slotted([slot='timestamp']) {
       flex-shrink: 0;
     }
-    ::slotted(vl-log-line-text) {
+    ::slotted([slot='text']) {
       flex-grow: 1;
     }
   `;
 
   @state()
-  private overflow: 'none' | 'expanded' | 'collapsed' = 'none';
+  private overflow: boolean = false;
+
+  @state()
+  private expanded: boolean = false;
 
   render() {
     return html`
       <slot name="file"></slot>
       <slot name="timestamp"></slot>
-      <!-- default slot: text -->
-      <slot></slot>
-      <!-- add line fold button here -->
+      <slot name="text"></slot>
     `;
   }
 }

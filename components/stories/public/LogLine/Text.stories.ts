@@ -83,8 +83,13 @@ const logLine = (expanded: boolean, words: TemplateResult[]) =>
         slot="file"
         path="src/public/SearchBox.ts"
       ></lv-log-line-file>
-      <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
-      <lv-log-line-text ?expanded=${expanded}> ${words} </lv-log-line-text>
+      <lv-log-line-timestamp
+        slot="timestamp"
+        value="1689086655774"
+      ></lv-log-line-timestamp>
+      <lv-log-line-text slot="text" ?expanded=${expanded}>
+        ${words}
+      </lv-log-line-text>
     </lv-log-line>
   `;
 
@@ -126,8 +131,11 @@ class ModifyableText extends LitElement {
             slot="file"
             path="src/public/SearchBox.ts"
           ></lv-log-line-file>
-          <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
-          <lv-log-line-text id="text" ?expanded=${this.expanded}>
+          <lv-log-line-timestamp
+            slot="timestamp"
+            value="1689086655774"
+          ></lv-log-line-timestamp>
+          <lv-log-line-text id="text" slot="text" ?expanded=${this.expanded}>
             <lv-log-line-word id="first-word">first-word</lv-log-line-word>
           </lv-log-line-text>
         </lv-log-line>

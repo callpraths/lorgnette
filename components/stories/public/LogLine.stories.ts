@@ -14,8 +14,11 @@ export const Default = () =>
         slot="file"
         path="src/public/SearchBox.ts"
       ></lv-log-line-file>
-      <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
-      <lv-log-line-text>
+      <lv-log-line-timestamp
+        slot="timestamp"
+        value="1689086655774"
+      ></lv-log-line-timestamp>
+      <lv-log-line-text slot="text">
         <lv-log-line-word>The</lv-log-line-word>
         <lv-log-line-word>quick</lv-log-line-word>
         <lv-log-line-word>brown</lv-log-line-word>
@@ -32,8 +35,11 @@ export const Default = () =>
         slot="file"
         path="src/public/SearchBox.ts"
       ></lv-log-line-file>
-      <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
-      <lv-log-line-text>
+      <lv-log-line-timestamp
+        slot="timestamp"
+        value="1689086655774"
+      ></lv-log-line-timestamp>
+      <lv-log-line-text slot="text">
         <lv-log-line-word>The</lv-log-line-word>
         <lv-log-line-word>quick</lv-log-line-word>
         <lv-log-line-word>brown</lv-log-line-word>
@@ -50,8 +56,11 @@ export const Default = () =>
         slot="file"
         path="src/public/SearchBox.ts"
       ></lv-log-line-file>
-      <lv-log-line-timestamp value="1689086655774"></lv-log-line-timestamp>
-      <lv-log-line-text>
+      <lv-log-line-timestamp
+        slot="timestamp"
+        value="1689086655774"
+      ></lv-log-line-timestamp>
+      <lv-log-line-text slot="text">
         <lv-log-line-word>The</lv-log-line-word>
         <lv-log-line-word>quick</lv-log-line-word>
         <lv-log-line-word>brown</lv-log-line-word>
