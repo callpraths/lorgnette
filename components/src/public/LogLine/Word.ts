@@ -1,3 +1,4 @@
+/* eslint-disable lit-a11y/click-events-have-key-events */
 import { css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/BaseElement.js';
@@ -40,8 +41,6 @@ export class LogLineWord extends BaseElement<LogLineWordEventData> {
   disabled: boolean = false;
 
   render() {
-    // TODO: Keyboard handling to be implemented in a later phase.
-    // eslint-disable-next-line lit-a11y/click-events-have-key-events
     return html`<span class="${this.highlightClass}" @click=${this.wordClick}
       ><slot></slot
     ></span>`;

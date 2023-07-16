@@ -1,8 +1,15 @@
+/* eslint-disable lit-a11y/click-events-have-key-events */
 import { TemplateResult, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/BaseElement.js';
 
 const baseName = (path: string) => path.split(/[\\/]/).pop() ?? '';
+
+export type LogLineFileClickEventData = unknown;
+
+export type LogLineFileEventData = {
+  'log-line-file-click': LogLineFileClickEventData;
+};
 
 /**
  * An element to render file name in a log line.
@@ -10,7 +17,7 @@ const baseName = (path: string) => path.split(/[\\/]/).pop() ?? '';
  * @slot - The file name.
  * @fires log-line-file-click - Fired when the file name is clicked.
  */
-export class LogLineFile extends BaseElement {
+export class LogLineFile extends BaseElement<LogLineFileEventData> {
   static styles = css`
     :host {
       border-right: 0.125rem solid var(--sl-color-gray-500);
@@ -40,7 +47,10 @@ export class LogLineFile extends BaseElement {
       <style>
         ${this.dynamicStyle()}
       </style>
-      ${this.fileName()}
+      <span @click=${this.handleClick}>
+        ${this.fileName()}
+        <span> </span
+      ></span>
     `;
   }
 
@@ -59,4 +69,8 @@ export class LogLineFile extends BaseElement {
     // This is just a heuristic and may not work for all fonts or languages.
     return html` :host { width: ${this.displayWidth * 0.75}rem; } `;
   }
+
+  private handleClick = () => {
+    this.emitCustomEvent('log-line-file-click', undefined);
+  };
 }

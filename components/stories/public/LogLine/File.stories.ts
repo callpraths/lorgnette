@@ -1,28 +1,11 @@
 import { html } from 'lit';
 import '../../../src/define.js';
-import { withTheme } from '../../utils.js';
+import { withEventLog, withTheme } from '../../utils.js';
 
 export default {
   title: 'Public/LogLine/File',
   component: 'lv-log-line',
 };
-
-export const Default = () =>
-  withTheme(html`
-    <lv-log-line>
-      <lv-log-line-file
-        slot="file"
-        path="src/public/SearchBox.ts"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
-        slot="timestamp"
-        value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>Hello</lv-log-line-word>
-      </lv-log-line-text>
-    </lv-log-line>
-  `);
 
 export const NoFile = () =>
   withTheme(html`
@@ -116,3 +99,23 @@ export const Fit = () =>
       </lv-log-line-text>
     </lv-log-line>
   `);
+
+export const Events = () =>
+  withEventLog(
+    withTheme(html`
+      <lv-log-line>
+        <lv-log-line-file
+          slot="file"
+          path="src/public/SearchBox.ts"
+        ></lv-log-line-file>
+        <lv-log-line-timestamp
+          slot="timestamp"
+          value="1689086655774"
+        ></lv-log-line-timestamp>
+        <lv-log-line-text slot="text">
+          <lv-log-line-word>Hello</lv-log-line-word>
+        </lv-log-line-text>
+      </lv-log-line>
+    `),
+    ['log-line-file-click']
+  );

@@ -1,3 +1,4 @@
+/* eslint-disable lit-a11y/click-events-have-key-events */
 import { TemplateResult, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/BaseElement.js';
@@ -44,12 +45,18 @@ const formatDuration = (duration: number): TemplateResult => {
   return html`${prefix} ${hours}h:${minutes}m:${seconds}.${milliseconds}s`;
 };
 
+export type LogLineTimestampClickEventData = unknown;
+
+export type LogLineTimestampEventData = {
+  'log-line-timestamp-click': LogLineTimestampClickEventData;
+};
+
 /**
  * An element to render timestamp in a log line.
  *
  * @fires log-line-timestamp-click - Fired when the timestamp is clicked.
  */
-export class LogLineTimestamp extends BaseElement {
+export class LogLineTimestamp extends BaseElement<LogLineTimestampEventData> {
   static styles = [
     css`
       #container {
@@ -108,7 +115,11 @@ export class LogLineTimestamp extends BaseElement {
   value: Date | undefined;
 
   render() {
-    return html`<div id="container" class="${this.getContainerClass()}">
+    return html`<div
+      id="container"
+      class="${this.getContainerClass()}"
+      @click=${this.handleClick}
+    >
       ${this.renderContent()}
     </div>`;
   }
@@ -143,4 +154,8 @@ export class LogLineTimestamp extends BaseElement {
         return hourPart;
     }
   }
+
+  private handleClick = () => {
+    this.emitCustomEvent('log-line-timestamp-click', undefined);
+  };
 }
