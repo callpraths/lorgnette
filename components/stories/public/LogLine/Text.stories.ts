@@ -76,9 +76,12 @@ const longToken = html`
   >
 `;
 
-const logLine = (expanded: boolean, words: TemplateResult[]) =>
+const logLine = (
+  words: TemplateResult[],
+  options?: { expanded?: boolean; highlighted?: boolean }
+) =>
   html`
-    <lv-log-line>
+    <lv-log-line ?highlighted=${options?.highlighted ?? false}>
       <lv-log-line-file
         slot="file"
         path="src/public/SearchBox.ts"
@@ -87,7 +90,7 @@ const logLine = (expanded: boolean, words: TemplateResult[]) =>
         slot="timestamp"
         value="1689086655774"
       ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text" ?expanded=${expanded}>
+      <lv-log-line-text slot="text" ?expanded=${options?.expanded ?? false}>
         ${words}
       </lv-log-line-text>
     </lv-log-line>
@@ -96,20 +99,29 @@ const logLine = (expanded: boolean, words: TemplateResult[]) =>
 const withBox = (content: TemplateResult) =>
   withTheme(html`<div style="width: 50rem;">${content}</div>`);
 
-export const Empty = () => withBox(logLine(false, []));
-export const EmptyExpanded = () => withBox(logLine(true, []));
-export const ManyWords = () => withBox(logLine(false, [manyWords]));
-export const ManyWordsExpanded = () => withBox(logLine(true, [manyWords]));
-export const LongWord = () => withBox(logLine(false, [longWord]));
-export const LongWordExpanded = () => withBox(logLine(true, [longWord]));
-export const LongToken = () => withBox(logLine(false, [longToken]));
-export const LongTokenExpanded = () => withBox(logLine(true, [longToken]));
+export const Empty = () => withBox(logLine([]));
+export const EmptyExpanded = () => withBox(logLine([], { expanded: true }));
+export const ManyWords = () => withBox(logLine([manyWords]));
+export const ManyWordsExpanded = () =>
+  withBox(logLine([manyWords], { expanded: true }));
+export const LongWord = () => withBox(logLine([longWord]));
+export const LongWordExpanded = () =>
+  withBox(logLine([longWord], { expanded: true }));
+export const LongToken = () => withBox(logLine([longToken]));
+export const LongTokenExpanded = () =>
+  withBox(logLine([longToken], { expanded: true }));
+export const Highlighted = () =>
+  withBox(logLine([manyWords], { highlighted: true }));
+export const HighlightedExpanded = () =>
+  withBox(logLine([manyWords], { expanded: true, highlighted: true }));
 export const All = () =>
   withBox(html`
-    ${logLine(false, [])} ${logLine(true, [])} ${logLine(false, [manyWords])}
-    ${logLine(true, [manyWords])} ${logLine(false, [longWord])}
-    ${logLine(true, [longWord])} ${logLine(false, [longToken])}
-    ${logLine(true, [longToken])}
+    ${logLine([])} ${logLine([], { expanded: true })} ${logLine([manyWords])}
+    ${logLine([manyWords], { expanded: true })} ${logLine([longWord])}
+    ${logLine([longWord], { expanded: true })} ${logLine([longToken])}
+    ${logLine([longToken], { expanded: true })}
+    ${logLine([manyWords], { highlighted: true })}
+    ${logLine([manyWords], { expanded: true, highlighted: true })}
   `);
 
 class ModifyableText extends LitElement {

@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { ref } from 'lit/directives/ref.js';
 import { BaseElement } from '../lib/BaseElement.js';
 import { LogLineTextOverflowEventData } from './LogLine/Text.js';
@@ -39,8 +39,8 @@ export class LogLine extends BaseElement {
     }
     /* Override the button's styles so it fits in a line of text */
     #fold-button::part(base) {
-      min-height: 1rem;
-      line-height: 1rem;
+      min-height: 0rem;
+      line-height: 0rem;
     }
     #fold-button::part(label) {
       padding: 0;
@@ -49,6 +49,12 @@ export class LogLine extends BaseElement {
       visibility: hidden;
     }
   `;
+
+  /**
+   * Whenther the line of log contains a highlighted word.
+   */
+  @property({ type: Boolean })
+  highlighted: boolean = false;
 
   @state()
   private overflow: boolean = false;
@@ -83,7 +89,10 @@ export class LogLine extends BaseElement {
         @click="${this.toggleFold}"
         class="${this.foldButtonClass}"
       >
-        <lvi-icon-line-fold ?expanded=${this.expanded}></lvi-icon-line-fold>
+        <lvi-icon-line-fold
+          ?expanded=${this.expanded}
+          ?highlighted=${this.highlighted}
+        ></lvi-icon-line-fold>
       </sl-button>
     `;
   }
