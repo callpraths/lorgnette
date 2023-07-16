@@ -4,6 +4,14 @@ import { ref } from 'lit/directives/ref.js';
 import { BaseElement } from '../lib/BaseElement.js';
 import { LogLineTextOverflowEventData } from './LogLine/Text.js';
 
+export type LogLineTextFoldChangedEventData = {
+  expanded: boolean;
+};
+
+export type LogLineEventData = {
+  'log-line-text-fold-changed': LogLineTextFoldChangedEventData;
+};
+
 /**
  * A line of text in the log.
  *
@@ -12,7 +20,7 @@ import { LogLineTextOverflowEventData } from './LogLine/Text.js';
  * @slot - The default slot contains the log's text. Must be of type {@link LogLineText}.
  * @fires log-line-text-fold-changed - Fired when the text is expanded or collapsed.
  */
-export class LogLine extends BaseElement {
+export class LogLine extends BaseElement<LogLineEventData> {
   static styles = css`
     :host {
       display: flex;
@@ -136,6 +144,9 @@ export class LogLine extends BaseElement {
     } else {
       this.textElement?.removeAttribute('expanded');
     }
+    this.emitCustomEvent('log-line-text-fold-changed', {
+      expanded: this.expanded,
+    });
   };
 
   private get foldButtonClass() {

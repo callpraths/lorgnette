@@ -110,10 +110,15 @@ export const LongWordExpanded = () =>
 export const LongToken = () => withBox(logLine([longToken]));
 export const LongTokenExpanded = () =>
   withBox(logLine([longToken], { expanded: true }));
+
 export const Highlighted = () =>
   withBox(logLine([manyWords], { highlighted: true }));
 export const HighlightedExpanded = () =>
   withBox(logLine([manyWords], { expanded: true, highlighted: true }));
+
+export const Events = () =>
+  withEventLog(withBox(logLine([manyWords])), ['log-line-text-fold-changed']);
+
 export const All = () =>
   withBox(html`
     ${logLine([])} ${logLine([], { expanded: true })} ${logLine([manyWords])}
@@ -207,7 +212,7 @@ class ModifyableText extends LitElement {
 }
 window.customElements.define('sbx-modifyable-text', ModifyableText);
 
-export const Events = () =>
+export const InternalEvents = () =>
   withEventLog(withTheme(html`<sbx-modifyable-text></sbx-modifyable-text>`), [
     'log-line-text-overflow',
   ]);

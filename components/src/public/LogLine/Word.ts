@@ -6,13 +6,19 @@ import {
   highlightColorStyles,
 } from '../../lib/highlightColor.js';
 
+export type LogLineWordClickEventData = unknown;
+
+export type LogLineWordEventData = {
+  'log-line-word-click': LogLineWordClickEventData;
+};
+
 /**
  * An element to render a "word" in a log line.
  *
  * @slot - The actual text that comprises this word.
  * @fires - log-line-word-click - Fired when the word is clicked.
  */
-export class LogLineWord extends BaseElement {
+export class LogLineWord extends BaseElement<LogLineWordEventData> {
   static styles = [
     css`
       :host {
@@ -34,7 +40,11 @@ export class LogLineWord extends BaseElement {
   disabled: boolean = false;
 
   render() {
-    return html`<span class="${this.highlightClass}"><slot></slot></span>`;
+    // TODO: Keyboard handling to be implemented in a later phase.
+    // eslint-disable-next-line lit-a11y/click-events-have-key-events
+    return html`<span class="${this.highlightClass}" @click=${this.wordClick}
+      ><slot></slot
+    ></span>`;
   }
 
   private get highlightClass() {
@@ -43,4 +53,11 @@ export class LogLineWord extends BaseElement {
     }
     return highlightClassName(this.highlight, 'soft');
   }
+
+  private wordClick = () => {
+    if (this.disabled) {
+      return;
+    }
+    this.emitCustomEvent('log-line-word-click', undefined);
+  };
 }
