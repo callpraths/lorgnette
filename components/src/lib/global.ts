@@ -1,9 +1,13 @@
 import { LogLineEventData } from '../public/log-line.js';
+import { LogLineFileDetailsEventData } from '../public/log-line/details/file.js';
+import { LogLineFileEventData } from '../public/log-line/file.js';
 import { LogLineTextEventData } from '../public/log-line/text.js';
 import { LogLineWordEventData } from '../public/log-line/word.js';
 import { SearchBoxEventData } from '../public/search-box.js';
 
 type CustomEventData = LogLineEventData &
+  LogLineFileDetailsEventData &
+  LogLineFileEventData &
   LogLineTextEventData &
   LogLineWordEventData &
   SearchBoxEventData;

@@ -13,3 +13,4 @@ export { LogLineFile } from './public/log-line/file.js';
 export { LogLineTimestamp } from './public/log-line/timestamp.js';
 export { LogLineText } from './public/log-line/text.js';
 export { LogLineWord } from './public/log-line/word.js';
+export { LogLineFileDetails } from './public/log-line/details/file.js';

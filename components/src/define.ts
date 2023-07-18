@@ -1,6 +1,7 @@
 import {
   LogLine,
   LogLineFile,
+  LogLineFileDetails,
   LogLineText,
   LogLineTimestamp,
   LogLineWord,
@@ -29,3 +30,4 @@ window.customElements.define('lv-log-line-timestamp', LogLineTimestamp);
 window.customElements.define('lv-log-line-word', LogLineWord);
 window.customElements.define('lv-log-line', LogLine);
 window.customElements.define('lv-search-box', SearchBox);
+window.customElements.define('lv-log-file-details', LogLineFileDetails);
