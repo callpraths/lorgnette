@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit';
-import './EventLogger.js';
+import './event-logger.js';
 
 export interface Story<T = unknown> {
   (args: T): TemplateResult;

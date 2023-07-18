@@ -1,7 +1,7 @@
 import { css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ref } from 'lit/directives/ref.js';
-import { BaseElement } from '../../lib/BaseElement.js';
+import { BaseElement } from '../../lib/base-element.js';
 
 export type LogLineTextOverflowEventData = {
   overflow: boolean;

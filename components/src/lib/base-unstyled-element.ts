@@ -1,4 +1,4 @@
-import { BaseElement } from './BaseElement.js';
+import { BaseElement } from './base-element.js';
 
 /**
  * Base class for elements that do not use shadow DOM.

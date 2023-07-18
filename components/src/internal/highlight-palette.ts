@@ -3,7 +3,7 @@ import {
   NUM_HIGHLIGHTS,
   highlightClassName,
   highlightColorStyles,
-} from '../lib/highlightColor.js';
+} from '../lib/highlight-color.js';
 
 /**
  * Layout for {@link SearchBox}.

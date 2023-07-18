@@ -1,4 +1,4 @@
-export { HighlightPalette } from './HighlightPalette.js';
-export { SearchBoxLayout } from './SearchBoxLayout.js';
-export { LineFold } from './icons/LineFold.js';
-export { ToggleButton } from './ToggleButton.js';
+export { HighlightPalette } from './highlight-palette.js';
+export { SearchBoxLayout } from './search-box-layout.js';
+export { LineFold } from './icons/line-fold.js';
+export { ToggleButton } from './toggle-button.js';

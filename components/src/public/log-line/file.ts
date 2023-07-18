@@ -1,7 +1,7 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
 import { TemplateResult, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { BaseElement } from '../../lib/BaseElement.js';
+import { BaseElement } from '../../lib/base-element.js';
 
 const baseName = (path: string) => path.split(/[\\/]/).pop() ?? '';
 

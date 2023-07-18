@@ -1,11 +1,11 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
 import { css, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { BaseElement } from '../../lib/BaseElement.js';
+import { BaseElement } from '../../lib/base-element.js';
 import {
   highlightClassName,
   highlightColorStyles,
-} from '../../lib/highlightColor.js';
+} from '../../lib/highlight-color.js';
 
 export type LogLineWordClickEventData = unknown;
 

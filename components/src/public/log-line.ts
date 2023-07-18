@@ -1,8 +1,8 @@
 import { css, html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { ref } from 'lit/directives/ref.js';
-import { BaseElement } from '../lib/BaseElement.js';
-import { LogLineTextOverflowEventData } from './LogLine/Text.js';
+import { BaseElement } from '../lib/base-element.js';
+import { LogLineTextOverflowEventData } from './log-line/text.js';
 
 export type LogLineTextFoldChangedEventData = {
   expanded: boolean;
