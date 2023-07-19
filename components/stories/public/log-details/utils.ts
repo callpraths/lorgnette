@@ -1,9 +1,14 @@
-import { TemplateResult, html, nothing } from 'lit';
+import { TemplateResult, html } from 'lit';
 import { withTheme } from '../../utils.js';
 
-export const logLine = (words: TemplateResult[], asAnchor?: boolean) =>
+export const logLine = (
+  words: TemplateResult[],
+  options?: {
+    expanded?: boolean;
+  }
+) =>
   html`
-    <lv-log-line slot=${asAnchor ? 'anchor' : nothing}>
+    <lv-log-line>
       <lv-log-line-file
         slot="file"
         path="src/public/SearchBox.ts"
@@ -12,7 +17,7 @@ export const logLine = (words: TemplateResult[], asAnchor?: boolean) =>
         slot="timestamp"
         value="1689086655774"
       ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
+      <lv-log-line-text ?expanded=${!!options?.expanded} slot="text">
         <lv-log-line-word>${words}</lv-log-line-word>
       </lv-log-line-text>
     </lv-log-line>
