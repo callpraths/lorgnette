@@ -4,23 +4,23 @@ import { BaseElement } from '../../../lib/base-element.js';
 import { parseTimestamp } from '../../../lib/time.js';
 import { ToggleButton } from '../../../internal/index.js';
 
-export type LogLineFileDetailsPinEventData = {
+export type LogFileDetailsPinEventData = {
   pinned: boolean;
 };
-export type LogLineTimestampDetailsCloseEventData = unknown;
+export type LogTimestampDetailsCloseEventData = unknown;
 
-export type LogLineTimestampDetailsEventData = {
-  'log-line-timestamp-pin': LogLineFileDetailsPinEventData;
-  'log-line-timestamp-details-close': LogLineTimestampDetailsCloseEventData;
+export type LogTimestampDetailsEventData = {
+  'log-timestamp-pin': LogFileDetailsPinEventData;
+  'log-timestamp-details-close': LogTimestampDetailsCloseEventData;
 };
 
 /**
  * A component that displays file details for a log line.
  *
- * @fires log-line-timestamp-pin - When the timestamp is pinned or unpinned as relative time origin.
- * @fires log-line-timestamp-details-close - When the user closes the timestamp details.
+ * @fires log-timestamp-pin - When the timestamp is pinned or unpinned as relative time origin.
+ * @fires log-timestamp-details-close - When the user closes the timestamp details.
  */
-export class LogLineTimestampDetails extends BaseElement<LogLineTimestampDetailsEventData> {
+export class LogTimestampDetails extends BaseElement<LogTimestampDetailsEventData> {
   static styles = css`
     #details-container {
       border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-900);
@@ -54,7 +54,7 @@ export class LogLineTimestampDetails extends BaseElement<LogLineTimestampDetails
    * Initial value for whether the timestamp is pinned as the relative time origin.
    *
    * This value is not updated when the user clicks the pin button.
-   * Subscribe to the `log-line-timestamp-pin` event to get updates.
+   * Subscribe to the `log-timestamp-pin` event to get updates.
    */
   @property({ type: Boolean })
   pinned: boolean = false;
@@ -86,12 +86,12 @@ export class LogLineTimestampDetails extends BaseElement<LogLineTimestampDetails
     const pin = this.shadowRoot?.getElementById('pin') as
       | ToggleButton
       | undefined;
-    this.emitCustomEvent('log-line-timestamp-pin', {
+    this.emitCustomEvent('log-timestamp-pin', {
       pinned: !!pin?.value,
     });
   };
 
   private onDismiss = () => {
-    this.emitCustomEvent('log-line-timestamp-details-close', undefined);
+    this.emitCustomEvent('log-timestamp-details-close', undefined);
   };
 }

@@ -10,93 +10,79 @@ export default {
 export const NoFile = () =>
   withTheme(html`
     <lv-log-line>
-      <lv-log-line-file slot="file"></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>Hello</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>Hello</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
   `);
 
 export const WindowsPath = () =>
   withTheme(html`
     <lv-log-line>
-      <lv-log-line-file
+      <lv-log-file
         slot="file"
         path="C:\\src\\public\\SearchBox.ts"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      ></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>Hello</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>Hello</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
   `);
 
 export const BasePath = () =>
   withTheme(html`
     <lv-log-line>
-      <lv-log-line-file slot="file" path="SearchBox.ts"></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="SearchBox.ts"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>Hello</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>Hello</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
   `);
 
 export const Fit = () =>
   withTheme(html`
     <lv-log-line>
-      <lv-log-line-file
-        slot="file"
-        path="MMMMMMMM"
-        displayWidth="8"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="MMMMMMMM" displayWidth="8"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word
-          >How many "M"s can displayWidth 8 fit?</lv-log-line-word
-        >
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>How many "M"s can displayWidth 8 fit?</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
     <lv-log-line>
-      <lv-log-line-file
-        slot="file"
-        path="mmmmmmmm"
-        displayWidth="8"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="mmmmmmmm" displayWidth="8"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>How many "m"s?</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>How many "m"s?</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
     <lv-log-line>
-      <lv-log-line-file
-        slot="file"
-        path="iiiiiiii"
-        displayWidth="8"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="iiiiiiii" displayWidth="8"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>And so many "i"s!</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>And so many "i"s!</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
   `);
 
@@ -104,18 +90,15 @@ export const Events = () =>
   withEventLog(
     withTheme(html`
       <lv-log-line>
-        <lv-log-line-file
-          slot="file"
-          path="src/public/SearchBox.ts"
-        ></lv-log-line-file>
-        <lv-log-line-timestamp
+        <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
+        <lv-log-timestamp
           slot="timestamp"
           value="1689086655774"
-        ></lv-log-line-timestamp>
-        <lv-log-line-text slot="text">
-          <lv-log-line-word>Hello</lv-log-line-word>
-        </lv-log-line-text>
+        ></lv-log-timestamp>
+        <lv-log-text slot="text">
+          <lv-log-word>Hello</lv-log-word>
+        </lv-log-text>
       </lv-log-line>
     `),
-    ['log-line-file-click']
+    ['log-file-click']
   );

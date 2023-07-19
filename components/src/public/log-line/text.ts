@@ -3,21 +3,21 @@ import { property } from 'lit/decorators.js';
 import { ref } from 'lit/directives/ref.js';
 import { BaseElement } from '../../lib/base-element.js';
 
-export type LogLineTextOverflowEventData = {
+export type LogTextOverflowEventData = {
   overflow: boolean;
 };
 
-export type LogLineTextEventData = {
-  'log-line-text-overflow': LogLineTextOverflowEventData;
+export type LogTextEventData = {
+  'log-text-overflow': LogTextOverflowEventData;
 };
 
 /**
  * An element to render the text of a log line.
  *
  * @slot - The words that comprise the text. Must be of type {@link LogLineWord}.
- * @fires - log-line-text-overflow - Fired when the contents of {@link LogLineText} overflow / undeflow the container.
+ * @fires - log-text-overflow - Fired when the contents of {@link LogText} overflow / undeflow the container.
  */
-export class LogLineText extends BaseElement<LogLineTextEventData> {
+export class LogText extends BaseElement<LogTextEventData> {
   static styles = css`
     :host {
       overflow: clip;
@@ -108,7 +108,7 @@ export class LogLineText extends BaseElement<LogLineTextEventData> {
       return;
     }
     this.lastOverflow = overflow;
-    this.emitCustomEvent('log-line-text-overflow', {
+    this.emitCustomEvent('log-text-overflow', {
       overflow,
     });
   };

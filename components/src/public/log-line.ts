@@ -2,23 +2,23 @@ import { css, html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { ref } from 'lit/directives/ref.js';
 import { BaseElement } from '../lib/base-element.js';
-import { LogLineTextOverflowEventData } from './log-line/text.js';
+import { LogTextOverflowEventData } from './log-line/text.js';
 
-export type LogLineTextFoldChangedEventData = {
+export type LogTextFoldChangedEventData = {
   expanded: boolean;
 };
 
 export type LogLineEventData = {
-  'log-line-text-fold-changed': LogLineTextFoldChangedEventData;
+  'log-text-fold-changed': LogTextFoldChangedEventData;
 };
 
 /**
  * A line of text in the log.
  *
- * @slot file - The file name. Must be of type {@link LogLineFile}.
- * @slot timestamp - The timestamp. Must be of type {@link LogLineTimestamp}.
- * @slot - The default slot contains the log's text. Must be of type {@link LogLineText}.
- * @fires log-line-text-fold-changed - Fired when the text is expanded or collapsed.
+ * @slot file - The file name. Must be of type {@link LogFile}.
+ * @slot timestamp - The timestamp. Must be of type {@link LogTimestamp}.
+ * @slot - The default slot contains the log's text. Must be of type {@link LogText}.
+ * @fires log-text-fold-changed - Fired when the text is expanded or collapsed.
  */
 export class LogLine extends BaseElement<LogLineEventData> {
   static styles = css`
@@ -71,15 +71,12 @@ export class LogLine extends BaseElement<LogLineEventData> {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.addEventListener('log-line-text-overflow', this.onLogLineTextOverflow);
+    this.addEventListener('log-text-overflow', this.onLogTextOverflow);
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.removeEventListener(
-      'log-line-text-overflow',
-      this.onLogLineTextOverflow
-    );
+    this.removeEventListener('log-text-overflow', this.onLogTextOverflow);
   }
 
   render() {
@@ -102,9 +99,7 @@ export class LogLine extends BaseElement<LogLineEventData> {
     `;
   }
 
-  private onLogLineTextOverflow = (
-    ev: CustomEvent<LogLineTextOverflowEventData>
-  ) => {
+  private onLogTextOverflow = (ev: CustomEvent<LogTextOverflowEventData>) => {
     this.overflow = ev.detail.overflow;
   };
 
@@ -141,7 +136,7 @@ export class LogLine extends BaseElement<LogLineEventData> {
     } else {
       this.textElement?.removeAttribute('expanded');
     }
-    this.emitCustomEvent('log-line-text-fold-changed', {
+    this.emitCustomEvent('log-text-fold-changed', {
       expanded: this.expanded,
     });
   };

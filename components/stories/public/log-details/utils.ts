@@ -11,19 +11,19 @@ export const logLine = (
 ) =>
   html`
     <lv-log-line>
-      <lv-log-line-file
+      <lv-log-file
         slot="file"
         path="src/public/SearchBox.ts"
         ?selected=${!!options?.fileSelected}
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      ></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
         ?selected=${!!options?.timestampSelected}
-      ></lv-log-line-timestamp>
-      <lv-log-line-text ?expanded=${!!options?.expanded} slot="text">
-        <lv-log-line-word>${words}</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text ?expanded=${!!options?.expanded} slot="text">
+        <lv-log-word>${words}</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
   `;
 

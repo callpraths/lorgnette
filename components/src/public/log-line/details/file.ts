@@ -2,21 +2,21 @@ import { css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../../lib/base-element.js';
 
-export type LogLineFileDetailsHideEventData = unknown;
-export type LogLineFileDetailsCloseEventData = unknown;
+export type LogFileDetailsHideEventData = unknown;
+export type LogFileDetailsCloseEventData = unknown;
 
-export type LogLineFileDetailsEventData = {
-  'log-line-file-hide': LogLineFileDetailsHideEventData;
-  'log-line-file-details-close': LogLineFileDetailsCloseEventData;
+export type LogFileDetailsEventData = {
+  'log-file-hide': LogFileDetailsHideEventData;
+  'log-file-details-close': LogFileDetailsCloseEventData;
 };
 
 /**
  * A component that displays file details for a log line.
  *
- * @fires log-line-file-hide - When the user clicks the hide button.
- * @fires log-line-file-details-close - When the user closes the file details.
+ * @fires log-file-hide - When the user clicks the hide button.
+ * @fires log-file-details-close - When the user closes the file details.
  */
-export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData> {
+export class LogFileDetails extends BaseElement<LogFileDetailsEventData> {
   static styles = css`
     #details-container {
       border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-900);
@@ -60,10 +60,10 @@ export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData>
   }
 
   private onHide = () => {
-    this.emitCustomEvent('log-line-file-hide', undefined);
+    this.emitCustomEvent('log-file-hide', undefined);
   };
 
   private onDismiss = () => {
-    this.emitCustomEvent('log-line-file-details-close', undefined);
+    this.emitCustomEvent('log-file-details-close', undefined);
   };
 }

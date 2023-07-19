@@ -35,18 +35,18 @@ const formatDuration = (duration: number): TemplateResult => {
   return html`${prefix} ${hours}h:${minutes}m:${seconds}.${milliseconds}s`;
 };
 
-export type LogLineTimestampClickEventData = unknown;
+export type LogTimestampClickEventData = unknown;
 
-export type LogLineTimestampEventData = {
-  'log-line-timestamp-click': LogLineTimestampClickEventData;
+export type LogTimestampEventData = {
+  'log-timestamp-click': LogTimestampClickEventData;
 };
 
 /**
  * An element to render timestamp in a log line.
  *
- * @fires log-line-timestamp-click - Fired when the timestamp is clicked.
+ * @fires log-timestamp-click - Fired when the timestamp is clicked.
  */
-export class LogLineTimestamp extends BaseElement<LogLineTimestampEventData> {
+export class LogTimestamp extends BaseElement<LogTimestampEventData> {
   static styles = [
     css`
       #container {
@@ -164,6 +164,6 @@ export class LogLineTimestamp extends BaseElement<LogLineTimestampEventData> {
   }
 
   private handleClick = () => {
-    this.emitCustomEvent('log-line-timestamp-click', undefined);
+    this.emitCustomEvent('log-timestamp-click', undefined);
   };
 }

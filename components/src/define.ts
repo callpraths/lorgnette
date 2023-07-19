@@ -1,10 +1,10 @@
 import {
   LogLine,
-  LogLineFile,
-  LogLineFileDetails,
-  LogLineText,
-  LogLineTimestamp,
-  LogLineTimestampDetails,
+  LogFile,
+  LogFileDetails,
+  LogText,
+  LogTimestamp,
+  LogTimestampDetails,
   LogLineWord,
   SearchBox,
 } from './index.js';
@@ -25,14 +25,11 @@ window.customElements.define('lvi-search-box-layout', SearchBoxLayout);
 window.customElements.define('lvi-toggle-button', ToggleButton);
 
 // Custom elements that are part of the public API.
-window.customElements.define('lv-log-line-file', LogLineFile);
-window.customElements.define('lv-log-line-text', LogLineText);
-window.customElements.define('lv-log-line-timestamp', LogLineTimestamp);
-window.customElements.define(
-  'lv-log-timestamp-details',
-  LogLineTimestampDetails
-);
-window.customElements.define('lv-log-line-word', LogLineWord);
+window.customElements.define('lv-log-file', LogFile);
+window.customElements.define('lv-log-text', LogText);
+window.customElements.define('lv-log-timestamp', LogTimestamp);
+window.customElements.define('lv-log-timestamp-details', LogTimestampDetails);
+window.customElements.define('lv-log-word', LogLineWord);
 window.customElements.define('lv-log-line', LogLine);
 window.customElements.define('lv-search-box', SearchBox);
-window.customElements.define('lv-log-file-details', LogLineFileDetails);
+window.customElements.define('lv-log-file-details', LogFileDetails);

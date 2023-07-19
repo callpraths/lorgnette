@@ -10,66 +10,57 @@ export default {
 export const Default = () =>
   withTheme(html`
     <lv-log-line>
-      <lv-log-line-file
-        slot="file"
-        path="src/public/SearchBox.ts"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>The</lv-log-line-word>
-        <lv-log-line-word>quick</lv-log-line-word>
-        <lv-log-line-word>brown</lv-log-line-word>
-        <lv-log-line-word>fox</lv-log-line-word>
-        <lv-log-line-word>jumps</lv-log-line-word>
-        <lv-log-line-word>over</lv-log-line-word>
-        <lv-log-line-word>the</lv-log-line-word>
-        <lv-log-line-word>lazy</lv-log-line-word>
-        <lv-log-line-word>dog</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>The</lv-log-word>
+        <lv-log-word>quick</lv-log-word>
+        <lv-log-word>brown</lv-log-word>
+        <lv-log-word>fox</lv-log-word>
+        <lv-log-word>jumps</lv-log-word>
+        <lv-log-word>over</lv-log-word>
+        <lv-log-word>the</lv-log-word>
+        <lv-log-word>lazy</lv-log-word>
+        <lv-log-word>dog</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
     <lv-log-line>
-      <lv-log-line-file
-        slot="file"
-        path="src/public/SearchBox.ts"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>The</lv-log-line-word>
-        <lv-log-line-word>quick</lv-log-line-word>
-        <lv-log-line-word>brown</lv-log-line-word>
-        <lv-log-line-word>fox</lv-log-line-word>
-        <lv-log-line-word>jumps</lv-log-line-word>
-        <lv-log-line-word>over</lv-log-line-word>
-        <lv-log-line-word>the</lv-log-line-word>
-        <lv-log-line-word>lazy</lv-log-line-word>
-        <lv-log-line-word>dog</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>The</lv-log-word>
+        <lv-log-word>quick</lv-log-word>
+        <lv-log-word>brown</lv-log-word>
+        <lv-log-word>fox</lv-log-word>
+        <lv-log-word>jumps</lv-log-word>
+        <lv-log-word>over</lv-log-word>
+        <lv-log-word>the</lv-log-word>
+        <lv-log-word>lazy</lv-log-word>
+        <lv-log-word>dog</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
     <lv-log-line>
-      <lv-log-line-file
-        slot="file"
-        path="src/public/SearchBox.ts"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text">
-        <lv-log-line-word>The</lv-log-line-word>
-        <lv-log-line-word>quick</lv-log-line-word>
-        <lv-log-line-word>brown</lv-log-line-word>
-        <lv-log-line-word>fox</lv-log-line-word>
-        <lv-log-line-word>jumps</lv-log-line-word>
-        <lv-log-line-word>over</lv-log-line-word>
-        <lv-log-line-word>the</lv-log-line-word>
-        <lv-log-line-word>lazy</lv-log-line-word>
-        <lv-log-line-word>dog</lv-log-line-word>
-      </lv-log-line-text>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text">
+        <lv-log-word>The</lv-log-word>
+        <lv-log-word>quick</lv-log-word>
+        <lv-log-word>brown</lv-log-word>
+        <lv-log-word>fox</lv-log-word>
+        <lv-log-word>jumps</lv-log-word>
+        <lv-log-word>over</lv-log-word>
+        <lv-log-word>the</lv-log-word>
+        <lv-log-word>lazy</lv-log-word>
+        <lv-log-word>dog</lv-log-word>
+      </lv-log-text>
     </lv-log-line>
   `);

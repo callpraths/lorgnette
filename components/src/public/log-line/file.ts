@@ -5,19 +5,19 @@ import { BaseElement } from '../../lib/base-element.js';
 
 const baseName = (path: string) => path.split(/[\\/]/).pop() ?? '';
 
-export type LogLineFileClickEventData = unknown;
+export type LogFileClickEventData = unknown;
 
-export type LogLineFileEventData = {
-  'log-line-file-click': LogLineFileClickEventData;
+export type LogFileEventData = {
+  'log-file-click': LogFileClickEventData;
 };
 
 /**
  * An element to render file name in a log line.
  *
  * @slot - The file name.
- * @fires log-line-file-click - Fired when the file name is clicked.
+ * @fires log-file-click - Fired when the file name is clicked.
  */
-export class LogLineFile extends BaseElement<LogLineFileEventData> {
+export class LogFile extends BaseElement<LogFileEventData> {
   static styles = css`
     :host {
       border-right: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-600);
@@ -83,6 +83,6 @@ export class LogLineFile extends BaseElement<LogLineFileEventData> {
   }
 
   private handleClick = () => {
-    this.emitCustomEvent('log-line-file-click', undefined);
+    this.emitCustomEvent('log-file-click', undefined);
   };
 }

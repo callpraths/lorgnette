@@ -1,18 +1,18 @@
 import { LogLineEventData } from '../public/log-line.js';
-import { LogLineFileDetailsEventData } from '../public/log-line/details/file.js';
-import { LogLineTimestampDetailsEventData } from '../public/log-line/details/timestamp.js';
-import { LogLineFileEventData } from '../public/log-line/file.js';
-import { LogLineTextEventData } from '../public/log-line/text.js';
-import { LogLineTimestampEventData } from '../public/log-line/timestamp.js';
+import { LogFileDetailsEventData } from '../public/log-line/details/file.js';
+import { LogTimestampDetailsEventData } from '../public/log-line/details/timestamp.js';
+import { LogFileEventData } from '../public/log-line/file.js';
+import { LogTextEventData } from '../public/log-line/text.js';
+import { LogTimestampEventData } from '../public/log-line/timestamp.js';
 import { LogLineWordEventData } from '../public/log-line/word.js';
 import { SearchBoxEventData } from '../public/search-box.js';
 
 type CustomEventData = LogLineEventData &
-  LogLineFileDetailsEventData &
-  LogLineFileEventData &
-  LogLineTextEventData &
-  LogLineTimestampDetailsEventData &
-  LogLineTimestampEventData &
+  LogFileDetailsEventData &
+  LogFileEventData &
+  LogTextEventData &
+  LogTimestampDetailsEventData &
+  LogTimestampEventData &
   LogLineWordEventData &
   SearchBoxEventData;
 

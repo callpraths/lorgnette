@@ -9,70 +9,70 @@ export default {
 };
 
 const manyWords = html`
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
-  <lv-log-line-word>word</lv-log-line-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
+  <lv-log-word>word</lv-log-word>
 `;
 const longWord = html`
-  <lv-log-line-word
+  <lv-log-word
     >word word word word word word word word word word word word word word word
     word word word word word word word word word word word word word word word
     word word word word word word word word word word word word word word word
     word word word word word word word word word word word word word word word
-  </lv-log-line-word>
+  </lv-log-word>
 `;
 const longToken = html`
-  <lv-log-line-word
-    >wordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordword</lv-log-line-word
+  <lv-log-word
+    >wordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordword</lv-log-word
   >
 `;
 
@@ -82,17 +82,14 @@ const logLine = (
 ) =>
   html`
     <lv-log-line ?highlighted=${options?.highlighted ?? false}>
-      <lv-log-line-file
-        slot="file"
-        path="src/public/SearchBox.ts"
-      ></lv-log-line-file>
-      <lv-log-line-timestamp
+      <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
+      <lv-log-timestamp
         slot="timestamp"
         value="1689086655774"
-      ></lv-log-line-timestamp>
-      <lv-log-line-text slot="text" ?expanded=${options?.expanded ?? false}>
+      ></lv-log-timestamp>
+      <lv-log-text slot="text" ?expanded=${options?.expanded ?? false}>
         ${words}
-      </lv-log-line-text>
+      </lv-log-text>
     </lv-log-line>
   `;
 
@@ -117,7 +114,7 @@ export const HighlightedExpanded = () =>
   withBox(logLine([manyWords], { expanded: true, highlighted: true }));
 
 export const Events = () =>
-  withEventLog(withBox(logLine([manyWords])), ['log-line-text-fold-changed']);
+  withEventLog(withBox(logLine([manyWords])), ['log-text-fold-changed']);
 
 export const All = () =>
   withBox(html`
@@ -144,17 +141,14 @@ class ModifyableText extends LitElement {
   render() {
     return html` <div style="width: 50rem;">
         <lv-log-line>
-          <lv-log-line-file
-            slot="file"
-            path="src/public/SearchBox.ts"
-          ></lv-log-line-file>
-          <lv-log-line-timestamp
+          <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
+          <lv-log-timestamp
             slot="timestamp"
             value="1689086655774"
-          ></lv-log-line-timestamp>
-          <lv-log-line-text id="text" slot="text" ?expanded=${this.expanded}>
-            <lv-log-line-word id="first-word">first-word</lv-log-line-word>
-          </lv-log-line-text>
+          ></lv-log-timestamp>
+          <lv-log-text id="text" slot="text" ?expanded=${this.expanded}>
+            <lv-log-word id="first-word">first-word</lv-log-word>
+          </lv-log-text>
         </lv-log-line>
       </div>
 
@@ -179,7 +173,7 @@ class ModifyableText extends LitElement {
 
   private addWord() {
     const text = this.shadowRoot!.querySelector('#text')!;
-    const word = document.createElement('lv-log-line-word');
+    const word = document.createElement('lv-log-word');
     word.textContent = ' word';
     text.appendChild(word);
   }
@@ -214,5 +208,5 @@ window.customElements.define('sbx-modifyable-text', ModifyableText);
 
 export const InternalEvents = () =>
   withEventLog(withTheme(html`<sbx-modifyable-text></sbx-modifyable-text>`), [
-    'log-line-text-overflow',
+    'log-text-overflow',
   ]);

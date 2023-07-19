@@ -49,5 +49,5 @@ export const Events = () =>
     <lv-log-timestamp-details value="1689086655774">
     ${selectedLogLine}
     </v-log-timestamp-details>`),
-    ['log-line-timestamp-pin', 'log-line-timestamp-details-close']
+    ['log-timestamp-pin', 'log-timestamp-details-close']
   );
