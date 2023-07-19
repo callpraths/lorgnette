@@ -2,17 +2,7 @@
 import { TemplateResult, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/base-element.js';
-
-const parseTimestamp = (value: string | null): Date | undefined => {
-  if (value === null) {
-    return undefined;
-  }
-  const timestamp = Number(value);
-  if (Number.isNaN(timestamp)) {
-    return undefined;
-  }
-  return new Date(timestamp);
-};
+import { parseTimestamp } from '../../lib/time.js';
 
 export type TimestampDisplayFormat = 'short' | 'long';
 
@@ -66,6 +56,10 @@ export class LogLineTimestamp extends BaseElement<LogLineTimestampEventData> {
         overflow: clip;
         text-overflow: ellipsis;
       }
+      .selected {
+        background-color: var(--sl-color-neutral-900);
+        color: var(--sl-color-neutral-50)};
+      }
     `,
     // Based on heuristics. The exact width required depends on the font and language.
     css`
@@ -114,17 +108,31 @@ export class LogLineTimestamp extends BaseElement<LogLineTimestampEventData> {
   @property({ converter: parseTimestamp })
   value: Date | undefined;
 
+  /**
+   * Whether the timestamp is selected for details view.
+   */
+  @property({ type: Boolean })
+  selected: boolean = false;
+
   render() {
     return html`<div
       id="container"
-      class="${this.getContainerClass()}"
+      class="${this.getContainerClasses()}"
       @click=${this.handleClick}
     >
       ${this.renderContent()}
     </div>`;
   }
 
-  private getContainerClass(): string {
+  private getContainerClasses(): string {
+    const classes = [this.getContainerLengthClass()];
+    if (this.selected) {
+      classes.push('selected');
+    }
+    return classes.join(' ');
+  }
+
+  private getContainerLengthClass(): string {
     if (this.origin !== undefined) {
       return 'relative';
     }

@@ -26,6 +26,7 @@ export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData>
     #text {
       display: block;
       padding-left: var(--sl-spacing-medium);
+      padding-bottom: var(--sl-spacing-small);
     }
     #button-bar {
       display: flex;

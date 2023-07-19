@@ -6,6 +6,7 @@ export const logLine = (
   options?: {
     expanded?: boolean;
     fileSelected?: boolean;
+    timestampSelected?: boolean;
   }
 ) =>
   html`
@@ -18,6 +19,7 @@ export const logLine = (
       <lv-log-line-timestamp
         slot="timestamp"
         value="1689086655774"
+        ?selected=${!!options?.timestampSelected}
       ></lv-log-line-timestamp>
       <lv-log-line-text ?expanded=${!!options?.expanded} slot="text">
         <lv-log-line-word>${words}</lv-log-line-word>

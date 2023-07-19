@@ -4,6 +4,7 @@ import {
   LogLineFileDetails,
   LogLineText,
   LogLineTimestamp,
+  LogLineTimestampDetails,
   LogLineWord,
   SearchBox,
 } from './index.js';
@@ -27,6 +28,10 @@ window.customElements.define('lvi-toggle-button', ToggleButton);
 window.customElements.define('lv-log-line-file', LogLineFile);
 window.customElements.define('lv-log-line-text', LogLineText);
 window.customElements.define('lv-log-line-timestamp', LogLineTimestamp);
+window.customElements.define(
+  'lv-log-timestamp-details',
+  LogLineTimestampDetails
+);
 window.customElements.define('lv-log-line-word', LogLineWord);
 window.customElements.define('lv-log-line', LogLine);
 window.customElements.define('lv-search-box', SearchBox);
