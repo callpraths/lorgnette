@@ -39,9 +39,7 @@ export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData>
       </div>
       <div id="details-container">
         <div id="text">Full path: ${this.path}</div>
-        <sl-button variant="default" size="small" @click=${this.handleClick}
-          >hide</sl-button
-        >
+        <sl-button variant="text" @click=${this.handleClick}>hide</sl-button>
       </div>
     </sl-popup>`;
   }
