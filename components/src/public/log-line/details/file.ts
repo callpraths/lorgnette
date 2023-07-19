@@ -3,9 +3,11 @@ import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../../lib/base-element.js';
 
 export type LogLineFileDetailsHideEventData = unknown;
+export type LogLineFileDetailsCloseEventData = unknown;
 
 export type LogLineFileDetailsEventData = {
   'log-line-file-hide': LogLineFileDetailsHideEventData;
+  'log-line-file-details-close': LogLineFileDetailsCloseEventData;
 };
 
 /**
@@ -24,6 +26,13 @@ export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData>
       display: block;
       padding-bottom: 0.5rem;
     }
+    #button-bar {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+    #filler {
+      flex-grow: 1;
+    }
   `;
 
   /**
@@ -39,12 +48,20 @@ export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData>
       </div>
       <div id="details-container">
         <div id="text">Full path: ${this.path}</div>
-        <sl-button variant="text" @click=${this.handleClick}>hide</sl-button>
+        <div id="button-bar">
+          <sl-button variant="text" @click=${this.onHide}>h</sl-button>
+          <div id="filler"></div>
+          <sl-button variant="text" @click=${this.onDismiss}>🗙</sl-button>
+        </div>
       </div>
     </sl-popup>`;
   }
 
-  private handleClick = () => {
+  private onHide = () => {
     this.emitCustomEvent('log-line-file-hide', undefined);
+  };
+
+  private onDismiss = () => {
+    this.emitCustomEvent('log-line-file-details-close', undefined);
   };
 }

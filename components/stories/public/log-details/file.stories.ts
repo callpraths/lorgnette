@@ -18,5 +18,5 @@ export const Events = () =>
     withBox(html`<lv-log-file-details path="/boo/bap/file.log">
 ${logLine([html`Some Text`])}
 </v-log-file-details`),
-    ['log-line-file-hide']
+    ['log-line-file-hide', 'log-line-file-details-close']
   );
