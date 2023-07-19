@@ -14,17 +14,18 @@ export type LogLineFileDetailsEventData = {
  * A component that displays file details for a log line.
  *
  * @fires log-line-file-hide - When the user clicks the hide button.
+ * @fires log-line-file-details-close - When the user closes the file details.
  */
 export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData> {
   static styles = css`
     #details-container {
-      border: 0.125rem solid var(--sl-color-neutral-300);
+      border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-300);
       background-color: var(--sl-color-neutral-50);
-      padding: 0.5rem;
+      padding: var(--sl-spacing-x-small);
     }
     #text {
       display: block;
-      padding-bottom: 0.5rem;
+      padding-left: var(--sl-spacing-medium);
     }
     #button-bar {
       display: flex;
