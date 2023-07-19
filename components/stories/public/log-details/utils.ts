@@ -5,6 +5,7 @@ export const logLine = (
   words: TemplateResult[],
   options?: {
     expanded?: boolean;
+    fileSelected?: boolean;
   }
 ) =>
   html`
@@ -12,6 +13,7 @@ export const logLine = (
       <lv-log-line-file
         slot="file"
         path="src/public/SearchBox.ts"
+        ?selected=${!!options?.fileSelected}
       ></lv-log-line-file>
       <lv-log-line-timestamp
         slot="timestamp"

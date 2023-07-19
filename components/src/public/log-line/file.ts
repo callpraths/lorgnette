@@ -20,11 +20,10 @@ export type LogLineFileEventData = {
 export class LogLineFile extends BaseElement<LogLineFileEventData> {
   static styles = css`
     :host {
-      border-right: 0.125rem solid var(--sl-color-gray-500);
+      border-right: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-600);
       padding-right: 0.25rem;
       overflow: clip;
       text-overflow: ellipsis;
-      height: 1em;
     }
   `;
 
@@ -37,6 +36,12 @@ export class LogLineFile extends BaseElement<LogLineFileEventData> {
   displayWidth: number = 10;
 
   /**
+   * Whether the file name is selected for details view.
+   */
+  @property({ type: Boolean })
+  selected: boolean = false;
+
+  /**
    * The path of the file.
    */
   @property()
@@ -47,10 +52,7 @@ export class LogLineFile extends BaseElement<LogLineFileEventData> {
       <style>
         ${this.dynamicStyle()}
       </style>
-      <span @click=${this.handleClick}>
-        ${this.fileName()}
-        <span> </span
-      ></span>
+      <div @click=${this.handleClick}>${this.fileName()}</div>
     `;
   }
 
@@ -64,10 +66,20 @@ export class LogLineFile extends BaseElement<LogLineFileEventData> {
     return html`${name}`;
   }
 
-  private dynamicStyle(): TemplateResult {
+  private dynamicStyle(): TemplateResult[] {
+    const dynamicStyle: TemplateResult[] = [];
     // 1rem fits an M, but that takes up too much space for most other characters, so we use 0.75rem.
     // This is just a heuristic and may not work for all fonts or languages.
-    return html` :host { width: ${this.displayWidth * 0.75}rem; } `;
+    dynamicStyle.push(html` :host { width: ${this.displayWidth * 0.75}rem; } `);
+    if (this.selected) {
+      dynamicStyle.push(
+        html`
+          :host { background-color: var(--sl-color-neutral-900); color:
+          var(--sl-color-neutral-50)};
+        `
+      );
+    }
+    return dynamicStyle;
   }
 
   private handleClick = () => {

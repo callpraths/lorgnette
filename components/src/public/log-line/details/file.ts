@@ -19,7 +19,7 @@ export type LogLineFileDetailsEventData = {
 export class LogLineFileDetails extends BaseElement<LogLineFileDetailsEventData> {
   static styles = css`
     #details-container {
-      border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-300);
+      border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-900);
       background-color: var(--sl-color-neutral-50);
       padding: var(--sl-spacing-x-small);
     }

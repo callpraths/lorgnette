@@ -33,9 +33,6 @@ export class LogLine extends BaseElement<LogLineEventData> {
       padding-top: 0.0625;
       padding-bottom: 0.0625;
     }
-    ::slotted(*) {
-      display: inline-block;
-    }
     ::slotted([slot='file']) {
       flex-shrink: 0;
     }

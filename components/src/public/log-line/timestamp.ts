@@ -60,11 +60,11 @@ export class LogLineTimestamp extends BaseElement<LogLineTimestampEventData> {
   static styles = [
     css`
       #container {
-        border-right: 0.125rem solid var(--sl-color-gray-500);
+        border-right: var(--sl-spacing-3x-small) solid
+          var(--sl-color-neutral-600);
         padding-right: 0.5rem;
         overflow: clip;
         text-overflow: ellipsis;
-        height: 1em;
       }
     `,
     // Based on heuristics. The exact width required depends on the font and language.
