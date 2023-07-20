@@ -1,4 +1,4 @@
-import { css, html } from 'lit';
+import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../../lib/base-element.js';
 import { parseTimestamp } from '../../../lib/time.js';
@@ -17,30 +17,11 @@ export type LogTimestampDetailsEventData = {
 /**
  * A component that displays file details for a log line.
  *
+ * @slot default - The log line to anchor popup to.
  * @fires log-timestamp-pin - When the timestamp is pinned or unpinned as relative time origin.
  * @fires log-timestamp-details-close - When the user closes the timestamp details.
  */
 export class LogTimestampDetails extends BaseElement<LogTimestampDetailsEventData> {
-  static styles = css`
-    #details-container {
-      border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-900);
-      background-color: var(--sl-color-neutral-50);
-      padding: var(--sl-spacing-x-small);
-    }
-    #text {
-      display: block;
-      padding-left: var(--sl-spacing-medium);
-      padding-bottom: var(--sl-spacing-small);
-    }
-    #button-bar {
-      display: flex;
-      flex-flow: row nowrap;
-    }
-    #filler {
-      flex-grow: 1;
-    }
-  `;
-
   /**
    * The timestamp value to display.
    *
@@ -60,26 +41,26 @@ export class LogTimestampDetails extends BaseElement<LogTimestampDetailsEventDat
   pinned: boolean = false;
 
   render() {
-    return html` <sl-popup active flip sync="width">
-      <div id="log-line" slot="anchor">
-        <slot></slot>
-      </div>
-      <div id="details-container">
-        <div id="text">
-          Timestamp: ${this.value?.toUTCString() ?? 'unknown'}
-        </div>
-        <div id="button-bar">
+    return html` <lvi-details-popup>
+      <slot></slot>
+      <div slot="popup-content">
+        <lvi-common-details>
+          <div slot="text">
+            Timestamp: ${this.value?.toUTCString() ?? 'unknown'}
+          </div>
           <lvi-toggle-button
             id="pin"
             ?checked=${this.pinned}
             @click=${this.onPinUpdated}
+            slot="button"
             >p</lvi-toggle-button
           >
-          <div id="filler"></div>
-          <sl-button variant="text" @click=${this.onDismiss}>🗙</sl-button>
-        </div>
+          <sl-button variant="text" @click=${this.onDismiss} slot="close"
+            >🗙</sl-button
+          >
+        </lvi-common-details>
       </div>
-    </sl-popup>`;
+    </lvi-details-popup>`;
   }
 
   private onPinUpdated = () => {
