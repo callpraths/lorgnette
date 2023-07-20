@@ -1,7 +1,7 @@
 // Patch global type definitions.
 import './lib/global.js';
 
-export { ToggleButton } from './internal/toggle-button.js';
+export { LogDetailsPopup } from './public/log-line/details/popup.js';
 export { LogLine } from './public/log-line.js';
 export { LogFileDetails } from './public/log-line/details/file.js';
 export { LogTimestampDetails } from './public/log-line/details/timestamp.js';

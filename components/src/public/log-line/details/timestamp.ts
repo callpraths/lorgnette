@@ -41,7 +41,7 @@ export class LogTimestampDetails extends BaseElement<LogTimestampDetailsEventDat
   pinned: boolean = false;
 
   render() {
-    return html` <lvi-details-popup>
+    return html` <lv-log-details-popup>
       <slot></slot>
       <div slot="popup-content">
         <lvi-common-details>
@@ -60,7 +60,7 @@ export class LogTimestampDetails extends BaseElement<LogTimestampDetailsEventDat
           >
         </lvi-common-details>
       </div>
-    </lvi-details-popup>`;
+    </lv-log-details-popup>`;
   }
 
   private onPinUpdated = () => {

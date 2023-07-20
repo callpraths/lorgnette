@@ -26,7 +26,7 @@ export class LogFileDetails extends BaseElement<LogFileDetailsEventData> {
 
   render() {
     return html`
-      <lvi-details-popup>
+      <lv-log-details-popup>
         <slot></slot>
         <div slot="popup-content">
           <lvi-common-details>
@@ -39,7 +39,7 @@ export class LogFileDetails extends BaseElement<LogFileDetailsEventData> {
             >
           </lvi-common-details>
         </div>
-      </lvi-details-popup>
+      </lv-log-details-popup>
     `;
   }
 

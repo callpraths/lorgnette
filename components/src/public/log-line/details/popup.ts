@@ -1,14 +1,16 @@
 import { css, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { BaseElement } from '../../lib/base-element.js';
+import { BaseElement } from '../../../lib/base-element.js';
 
 /**
- * Internal component to house popup details for a log line.
+ * Component to house popup details for a log line.
+ *
+ * Ensures consistent contents and layout across log line details.
  *
  * @slot default - The log line to anchor popup to.
  * @slot popup-content - The container for the details.
  */
-export class DetailsPopup extends BaseElement {
+export class LogDetailsPopup extends BaseElement {
   static styles = css`
     ::slotted([slot='popup-content']) {
       border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-900);
