@@ -1,5 +1,5 @@
 /* eslint-disable lit-a11y/click-events-have-key-events */
-import { css, html } from 'lit';
+import { css, html, nothing } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/base-element.js';
 import {
@@ -58,9 +58,14 @@ export class LogLineWord extends BaseElement<LogLineWordEventData> {
   disabled: boolean = false;
 
   render() {
-    return html`<span class="${this.highlightClass}" @click=${this.wordClick}
-      ><slot></slot
-    ></span>`;
+    // NB: Had to explicitly add space because slotted in spans into `<lv-log-text>` were not getting any space between them.
+    // This means there is a trailing space at the end of a log line which can create a spurious fold if the length of the line is
+    // exactly the width of the container.
+    return html`<span
+        class="${this.highlightClass || nothing}"
+        @click=${this.wordClick}
+        ><slot></slot></span
+      >&nbsp;`;
   }
 
   private get highlightClass() {

@@ -30,6 +30,25 @@ export const Highlight = () =>
     </lv-log-line>
   `);
 
+export const Spacing = () =>
+  withEventLog(
+    withTheme(html`
+      <lv-log-line>
+        <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
+        <lv-log-timestamp
+          slot="timestamp"
+          value="1689086655774"
+        ></lv-log-timestamp>
+        <lv-log-text slot="text">
+          ${Array.from(Array(50)).map(
+            () => html`<lv-log-word>first second</lv-log-word>`
+          )}
+        </lv-log-text>
+      </lv-log-line>
+    `),
+    ['log-line-word-click']
+  );
+
 export const Events = () =>
   withEventLog(
     withTheme(html`
