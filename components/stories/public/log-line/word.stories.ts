@@ -24,6 +24,8 @@ export const Highlight = () =>
         <lv-log-word highlight="4005"
           >Really large number, module highlight</lv-log-word
         >
+        <lv-log-word>Filler</lv-log-word>
+        <lv-log-word selected>Selected words...</lv-log-word>
       </lv-log-text>
     </lv-log-line>
   `);

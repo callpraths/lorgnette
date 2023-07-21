@@ -8,14 +8,19 @@ export default {
   component: 'lv-log-file-details',
 };
 
-const longLogLine = logLine(Array.from(Array(50)).map(() => html`word `));
+const longLogLine = logLine(
+  Array.from(Array(50)).map(() => html`<lv-log-word>word</lv-log-word>`)
+);
 const longLogLineExpanded = logLine(
-  Array.from(Array(100)).map(() => html`word `),
+  Array.from(Array(100)).map(() => html`<lv-log-word>word</lv-log-word>`),
   { expanded: true }
 );
-const selectedLogLine = logLine([html`Anchoring line.`], {
-  fileSelected: true,
-});
+const selectedLogLine = logLine(
+  [html`<lv-log-word>Anchoring line.</lv-log-word>`],
+  {
+    fileSelected: true,
+  }
+);
 
 export const Default = () =>
   withBox(html`<lv-log-file-details path="/boo/bap/file.log">

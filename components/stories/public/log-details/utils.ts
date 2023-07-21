@@ -22,7 +22,7 @@ export const logLine = (
         ?selected=${!!options?.timestampSelected}
       ></lv-log-timestamp>
       <lv-log-text ?expanded=${!!options?.expanded} slot="text">
-        <lv-log-word>${words}</lv-log-word>
+        ${words}
       </lv-log-text>
     </lv-log-line>
   `;
@@ -37,7 +37,11 @@ export const withBox = (content: TemplateResult, fillCount = 5) =>
       }
     </style>
     <div id="container">
-      ${Array.from(Array(fillCount)).map(() => logLine([html`top filler`]))}
+      ${Array.from(Array(fillCount)).map(() =>
+        logLine([html`<lv-log-word>top filler</lv-log-word>`])
+      )}
       ${content}
-      ${Array.from(Array(fillCount)).map(() => logLine([html`bottom filler`]))}
+      ${Array.from(Array(fillCount)).map(() =>
+        logLine([html`<lv-log-word>bottom filler</lv-log-word>`])
+      )}
     </div>`);

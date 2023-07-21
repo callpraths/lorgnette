@@ -8,14 +8,19 @@ export default {
   component: 'lv-log-timestamp-details',
 };
 
-const longLogLine = logLine(Array.from(Array(50)).map(() => html`word `));
+const longLogLine = logLine(
+  Array.from(Array(50)).map(() => html`<lv-log-word>word</lv-log-word>`)
+);
 const longLogLineExpanded = logLine(
-  Array.from(Array(100)).map(() => html`word `),
+  Array.from(Array(100)).map(() => html`<lv-log-word>word</lv-log-word>`),
   { expanded: true }
 );
-const selectedLogLine = logLine([html`Anchoring line.`], {
-  timestampSelected: true,
-});
+const selectedLogLine = logLine(
+  [html`<lv-log-word>Anchoring line.</lv-log-word>`],
+  {
+    timestampSelected: true,
+  }
+);
 
 export const Default = () =>
   withBox(html`
