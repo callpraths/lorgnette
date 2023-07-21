@@ -1,6 +1,10 @@
 import { css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../../lib/base-element.js';
+import {
+  mainBackgroundColor,
+  selectedTextBackgroundColor,
+} from '../../../lib/styles.js';
 
 /**
  * Component to house popup details for a log line.
@@ -13,9 +17,11 @@ import { BaseElement } from '../../../lib/base-element.js';
 export class LogDetailsPopup extends BaseElement {
   static styles = css`
     ::slotted([slot='popup-content']) {
-      border: var(--sl-spacing-3x-small) solid var(--sl-color-neutral-900);
-      background-color: var(--sl-color-neutral-50);
-      padding: var(--sl-spacing-x-small);
+      /** Deal with flex containers **/
+      display: block;
+      border: var(--sl-spacing-3x-small) solid ${selectedTextBackgroundColor};
+      background-color: ${mainBackgroundColor};
+      padding: var(--sl-spacing-3x-small);
     }
   `;
 

@@ -3,6 +3,7 @@ import { property, state } from 'lit/decorators.js';
 import { ref } from 'lit/directives/ref.js';
 import { BaseElement } from '../lib/base-element.js';
 import { LogTextOverflowEventData } from './log-line/text.js';
+import { mainBackgroundColor } from '../lib/styles.js';
 
 export type LogTextFoldChangedEventData = {
   expanded: boolean;
@@ -27,7 +28,7 @@ export class LogLine extends BaseElement<LogLineEventData> {
       flex-direction: row;
       flex-wrap: nowrap;
       gap: 0.25rem;
-      background-color: var(--sl-color-neutral-50);
+      background-color: ${mainBackgroundColor};
       padding-left: 0.25rem;
       padding-right: 0.25rem;
       padding-top: 0.0625;

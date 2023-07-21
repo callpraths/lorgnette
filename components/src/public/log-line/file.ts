@@ -2,6 +2,10 @@
 import { TemplateResult, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/base-element.js';
+import {
+  selectedTextBackgroundColor,
+  selectedTextColor,
+} from '../../lib/styles.js';
 
 const baseName = (path: string) => path.split(/[\\/]/).pop() ?? '';
 
@@ -74,8 +78,8 @@ export class LogFile extends BaseElement<LogFileEventData> {
     if (this.selected) {
       dynamicStyle.push(
         html`
-          :host { background-color: var(--sl-color-neutral-900); color:
-          var(--sl-color-neutral-50)};
+          :host { background-color: ${selectedTextBackgroundColor}; color:
+          ${selectedTextColor};
         `
       );
     }

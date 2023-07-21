@@ -3,6 +3,10 @@ import { TemplateResult, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { BaseElement } from '../../lib/base-element.js';
 import { parseTimestamp } from '../../lib/time.js';
+import {
+  selectedTextBackgroundColor,
+  selectedTextColor,
+} from '../../lib/styles.js';
 
 export type TimestampDisplayFormat = 'short' | 'long';
 
@@ -57,8 +61,8 @@ export class LogTimestamp extends BaseElement<LogTimestampEventData> {
         text-overflow: ellipsis;
       }
       .selected {
-        background-color: var(--sl-color-neutral-900);
-        color: var(--sl-color-neutral-50)};
+        background-color: ${selectedTextBackgroundColor};
+        color: ${selectedTextColor}};
       }
     `,
     // Based on heuristics. The exact width required depends on the font and language.
