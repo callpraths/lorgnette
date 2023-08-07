@@ -1,8 +1,8 @@
-# Web components for the UI
+# Web components for the lorgenette UI
 
-## Usage
+This package contains web components for the UI elements in lorgnette.
 
-TBD
+See top-level [README](../../README.md) for more information.
 
 ## Linting and formatting
 
@@ -45,3 +45,4 @@ To build a production version of Storybook, run
 ```bash
 npm run storybook:build
 ```
+
