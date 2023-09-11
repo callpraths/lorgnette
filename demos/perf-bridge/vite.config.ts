@@ -7,7 +7,17 @@ import topLevelAwait from 'vite-plugin-top-level-await'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [topLevelAwait(), vue(), wasm()],
+  plugins: [
+    topLevelAwait(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('lv-') || tag.startsWith('lvi-')
+        }
+      }
+    }),
+    wasm()
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

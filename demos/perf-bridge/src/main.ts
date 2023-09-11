@@ -1,11 +1,10 @@
-import './assets/main.css'
-
+import * as xPaginate from 'x-paginate'
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import 'lorgnette-components/define.js'
+
+xPaginate.initialize()
 
 const app = createApp(App)
-
-app.use(router)
 
 app.mount('#app')
