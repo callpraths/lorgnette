@@ -111,7 +111,7 @@ export class LogLine extends BaseElement<LogLineEventData> {
    * in `text` from the value of `expanded`.
    */
   private textRefChanged = (textElement?: Element) => {
-    if (textElement === null) {
+    if (!(textElement instanceof HTMLSlotElement)) {
       return;
     }
     const text = textElement as HTMLSlotElement;
