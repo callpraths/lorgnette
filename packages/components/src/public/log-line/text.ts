@@ -35,6 +35,9 @@ export class LogText extends BaseElement<LogTextEventData> {
       overflow-wrap: anywhere;
       word-break: break-all;
     }
+    #tailend {
+      visibility: hidden;
+    }
   `;
 
   /**
@@ -45,11 +48,10 @@ export class LogText extends BaseElement<LogTextEventData> {
   private intersectionObserver?: IntersectionObserver;
 
   /**
-   * A reference to the last word in the text.
-   *
-   * We remember this so we can minimize subscription updates to the intersection observer.
+   * A dummy element used to detect if the _last_ word of the text intersects with the
+   * container 100%.
    */
-  private lastWord?: Element;
+  private tailEnd?: Element;
 
   /**
    * Cached value of overflow to avoid emitting duplicate events.
@@ -72,45 +74,47 @@ export class LogText extends BaseElement<LogTextEventData> {
       class="${this.expanded ? 'unfolded' : 'folded'}"
       @mouseup=${this.onMouseUp}
     >
-      <slot ${ref(this.slotRefChanged)} id="word"></slot>
+      <slot id="word"></slot>
+      <span ${ref(this.tailEndRefChanged)} id="tailend">$$</span>
     </div>`;
   }
 
   private containerRefChanged = (container?: Element) => {
-    this.intersectionObserver?.disconnect();
-    if (container === null) {
+    if (this.intersectionObserver) {
+      if (this.tailEnd) {
+        this.intersectionObserver.unobserve(this.tailEnd);
+      }
+      this.intersectionObserver.disconnect();
+    }
+    this.intersectionObserver = undefined;
+    if (!container) {
       return;
     }
+
     this.intersectionObserver = new IntersectionObserver(this.updateOverflow, {
       root: container,
       threshold: 1.0,
     });
+    if (this.intersectionObserver && this.tailEnd) {
+      this.intersectionObserver.observe(this.tailEnd);
+    }
   };
 
-  private slotRefChanged = (slotElement?: Element) => {
-    if (!(slotElement instanceof HTMLSlotElement)) {
-      return;
+  private tailEndRefChanged = (tailEnd?: Element) => {
+    if (this.tailEnd && this.intersectionObserver) {
+      this.intersectionObserver.unobserve(this.tailEnd);
     }
-    const slot = slotElement as HTMLSlotElement;
-    slot.addEventListener('slotchange', () => {
-      const elements = slot.assignedElements();
-      if (elements.length === 0) {
-        return;
-      }
-      const lastWord = elements[elements.length - 1];
-      if (lastWord === this.lastWord) {
-        return;
-      }
-      this.lastWord = lastWord;
-      this.intersectionObserver?.disconnect();
-      this.intersectionObserver?.observe(lastWord);
-    });
-    // TODO: remove event listener (?) when slot is removed.
+    this.tailEnd = tailEnd;
+    if (this.intersectionObserver && this.tailEnd) {
+      this.intersectionObserver.observe(this.tailEnd);
+    }
   };
 
   private updateOverflow = (entries: IntersectionObserverEntry[]) => {
     // No overflow iff the last word is fully visible.
-    const overflow = entries.length > 0 && !entries[0].isIntersecting;
+    const entriesByTimeDesc = entries.sort((a, b) => b.time - a.time);
+    const overflow =
+      entriesByTimeDesc.length > 0 && !entriesByTimeDesc[0].isIntersecting;
     if (overflow === this.lastOverflow) {
       return;
     }
