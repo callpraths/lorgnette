@@ -75,6 +75,13 @@ const longToken = html`
     >wordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordword</lv-log-word
   >
 `;
+const rawText = html`text`;
+const rawLongText = html`longtext longtext longtext longtext longtext longtext
+longtext longtext longtext longtext longtext longtext longtext longtext longtext
+longtext longtext longtext longtext longtext longtext longtext longtext longtext
+longtext longtext longtext longtext longtext longtext longtext longtext longtext
+longtext longtext longtext longtext longtext longtext longtext longtext longtext
+longtext longtext`;
 
 const logLine = (
   words: TemplateResult[],
@@ -112,9 +119,17 @@ export const Highlighted = () =>
   withBox(logLine([manyWords], { highlighted: true }));
 export const HighlightedExpanded = () =>
   withBox(logLine([manyWords], { expanded: true, highlighted: true }));
+export const OnlyText = () => withBox(logLine([rawLongText]));
+export const TextAndWords = () =>
+  withBox(logLine([rawText, manyWords, rawText]));
+export const LongTextAndWords = () =>
+  withBox(logLine([rawLongText, manyWords, rawLongText]));
 
 export const Events = () =>
-  withEventLog(withBox(logLine([manyWords])), ['log-text-fold-changed']);
+  withEventLog(withBox(logLine([manyWords])), [
+    'log-text-fold-changed',
+    'log-text-selection',
+  ]);
 
 export const All = () =>
   withBox(html`

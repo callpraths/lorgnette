@@ -7,15 +7,21 @@ export type LogTextOverflowEventData = {
   overflow: boolean;
 };
 
+export type LogTextSelectionEventData = {
+  selection: string;
+};
+
 export type LogTextEventData = {
   'log-text-overflow': LogTextOverflowEventData;
+  'log-text-selection': LogTextSelectionEventData;
 };
 
 /**
  * An element to render the text of a log line.
  *
- * @slot - The words that comprise the text. Must be of type {@link LogLineWord}.
+ * @slot - The words that comprise the text. Must be of type {@link LogLineWord} or plain text.
  * @fires - log-text-overflow - Fired when the contents of {@link LogText} overflow / undeflow the container.
+ * @fires - log-text-selection - Fired when text within this element is selected.
  */
 export class LogText extends BaseElement<LogTextEventData> {
   static styles = css`
@@ -64,6 +70,7 @@ export class LogText extends BaseElement<LogTextEventData> {
     return html`<div
       ${ref(this.containerRefChanged)}
       class="${this.expanded ? 'unfolded' : 'folded'}"
+      @mouseup=${this.onMouseUp}
     >
       <slot ${ref(this.slotRefChanged)} id="word"></slot>
     </div>`;
@@ -81,7 +88,7 @@ export class LogText extends BaseElement<LogTextEventData> {
   };
 
   private slotRefChanged = (slotElement?: Element) => {
-    if (slotElement === null) {
+    if (!(slotElement instanceof HTMLSlotElement)) {
       return;
     }
     const slot = slotElement as HTMLSlotElement;
@@ -111,5 +118,16 @@ export class LogText extends BaseElement<LogTextEventData> {
     this.emitCustomEvent('log-text-overflow', {
       overflow,
     });
+  };
+
+  private onMouseUp = (event: MouseEvent) => {
+    // Prevent the event from bubbling up to the log line.
+    event.stopPropagation();
+    const selection = document.getSelection()?.toString();
+    if (selection) {
+      this.emitCustomEvent('log-text-selection', {
+        selection,
+      });
+    }
   };
 }
