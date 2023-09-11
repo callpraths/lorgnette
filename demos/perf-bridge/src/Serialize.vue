@@ -2,7 +2,7 @@
 import * as xPaginate from 'x-paginate';
 import { ref } from 'vue';
 
-const ctx = xPaginate.SerializingContext.new(300, 500);
+const ctx = xPaginate.SerializingContext.new(100, 100);
 const page = ref(ctx.next());
 </script>
 
@@ -24,5 +24,7 @@ const page = ref(ctx.next());
   background-color: #333333;
   width: 80vw;
   height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>
