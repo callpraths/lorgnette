@@ -7,7 +7,9 @@ import {
   LogTimestampDetails,
   LogLineWord,
   SearchBox,
+  LayoutMainWindow,
   LogDetailsPopup,
+  LayoutLogsPane,
 } from './index.js';
 import {
   CommonDetails,
@@ -44,3 +46,6 @@ window.customElements.define('lv-log-timestamp-details', LogTimestampDetails);
 window.customElements.define('lv-log-timestamp', LogTimestamp);
 window.customElements.define('lv-log-word', LogLineWord);
 window.customElements.define('lv-search-box', SearchBox);
+
+window.customElements.define('lv-layout-logs-pane', LayoutLogsPane);
+window.customElements.define('lv-layout-main-window', LayoutMainWindow);

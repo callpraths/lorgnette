@@ -1,138 +1,50 @@
-import { LitElement, TemplateResult, css, html } from 'lit';
-import '../../../src/define.js';
+import { LitElement, css, html } from 'lit';
 import { state } from 'lit/decorators.js';
-import { withEventLog, withTheme } from '../../utils.js';
+import '../../../src/define.js';
+import {
+  longToken,
+  longWord,
+  manyWords,
+  rawLongText,
+  rawText,
+} from '../../constants.js';
+import { logLine, withEventLog, withTheme } from '../../utils.js';
 
 export default {
   title: 'Public/LogLine/Text',
   component: 'lv-log-line',
 };
 
-const manyWords = html`
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-  <lv-log-word>word</lv-log-word>
-`;
-const longWord = html`
-  <lv-log-word
-    >word word word word word word word word word word word word word word word
-    word word word word word word word word word word word word word word word
-    word word word word word word word word word word word word word word word
-    word word word word word word word word word word word word word word word
-  </lv-log-word>
-`;
-const longToken = html`
-  <lv-log-word
-    >wordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordwordword</lv-log-word
-  >
-`;
-const rawText = html`text`;
-const rawLongText = html`longtext longtext longtext longtext longtext longtext
-longtext longtext longtext longtext longtext longtext longtext longtext longtext
-longtext longtext longtext longtext longtext longtext longtext longtext longtext
-longtext longtext longtext longtext longtext longtext longtext longtext longtext
-longtext longtext longtext longtext longtext longtext longtext longtext longtext
-longtext longtext`;
-
-const logLine = (
-  words: TemplateResult[],
-  options?: { expanded?: boolean; highlighted?: boolean }
-) =>
-  html`
-    <lv-log-line ?highlighted=${options?.highlighted ?? false}>
-      <lv-log-file slot="file" path="src/public/SearchBox.ts"></lv-log-file>
-      <lv-log-timestamp
-        slot="timestamp"
-        value="1689086655774"
-      ></lv-log-timestamp>
-      <lv-log-text slot="text" ?expanded=${options?.expanded ?? false}>
-        ${words}
-      </lv-log-text>
-    </lv-log-line>
-  `;
-
-const withBox = (content: TemplateResult) =>
-  withTheme(html`<div style="width: 50rem;">${content}</div>`);
-
-export const Empty = () => withBox(logLine([]));
-export const EmptyExpanded = () => withBox(logLine([], { expanded: true }));
-export const ManyWords = () => withBox(logLine([manyWords]));
+export const Empty = () => withTheme(logLine([]));
+export const EmptyExpanded = () => withTheme(logLine([], { expanded: true }));
+export const ManyWords = () => withTheme(logLine([manyWords]));
 export const ManyWordsExpanded = () =>
-  withBox(logLine([manyWords], { expanded: true }));
-export const LongWord = () => withBox(logLine([longWord]));
+  withTheme(logLine([manyWords], { expanded: true }));
+export const LongWord = () => withTheme(logLine([longWord]));
 export const LongWordExpanded = () =>
-  withBox(logLine([longWord], { expanded: true }));
-export const LongToken = () => withBox(logLine([longToken]));
+  withTheme(logLine([longWord], { expanded: true }));
+export const LongToken = () => withTheme(logLine([longToken]));
 export const LongTokenExpanded = () =>
-  withBox(logLine([longToken], { expanded: true }));
+  withTheme(logLine([longToken], { expanded: true }));
 
 export const Highlighted = () =>
-  withBox(logLine([manyWords], { highlighted: true }));
+  withTheme(logLine([manyWords], { highlighted: true }));
 export const HighlightedExpanded = () =>
-  withBox(logLine([manyWords], { expanded: true, highlighted: true }));
-export const OnlyText = () => withBox(logLine([rawLongText]));
+  withTheme(logLine([manyWords], { expanded: true, highlighted: true }));
+export const OnlyText = () => withTheme(logLine([rawLongText]));
 export const TextAndWords = () =>
-  withBox(logLine([rawText, manyWords, rawText]));
+  withTheme(logLine([rawText, manyWords, rawText]));
 export const LongTextAndWords = () =>
-  withBox(logLine([rawLongText, manyWords, rawLongText]));
+  withTheme(logLine([rawLongText, manyWords, rawLongText]));
 
 export const Events = () =>
-  withEventLog(withBox(logLine([manyWords])), [
+  withEventLog(withTheme(logLine([manyWords])), [
     'log-text-fold-changed',
     'log-text-selection',
   ]);
 
 export const All = () =>
-  withBox(html`
+  withTheme(html`
     ${logLine([])} ${logLine([], { expanded: true })} ${logLine([manyWords])}
     ${logLine([manyWords], { expanded: true })} ${logLine([longWord])}
     ${logLine([longWord], { expanded: true })} ${logLine([longToken])}

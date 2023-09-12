@@ -25,26 +25,24 @@ const selectedLogLine = logLine(
 export const Default = () =>
   withBox(html`<lv-log-file-details path="/boo/bap/file.log">
     ${selectedLogLine}
-  </v-log-file-details`);
+  </lv-log-file-details>`);
 
 export const Long = () =>
-  withBox(html`
-  ${longLogLine}
-  <lv-log-file-details path="/boo/bap/file.log">
-  ${selectedLogLine}
-  </v-log-file-details`);
+  withBox(html` ${longLogLine}
+    <lv-log-file-details path="/boo/bap/file.log">
+      ${selectedLogLine}
+    </lv-log-file-details>`);
 
 export const Expanded = () =>
-  withBox(html`
-  ${longLogLineExpanded}
-  <lv-log-file-details path="/boo/bap/file.log">
-  ${selectedLogLine}
-  </v-log-file-details`);
+  withBox(html` ${longLogLineExpanded}
+    <lv-log-file-details path="/boo/bap/file.log">
+      ${selectedLogLine}
+    </lv-log-file-details>`);
 
 export const Events = () =>
   withEventLog(
     withBox(html`<lv-log-file-details path="/boo/bap/file.log">
-    ${selectedLogLine}
-</v-log-file-details`),
+      ${selectedLogLine}
+    </lv-log-file-details>`),
     ['log-file-hide', 'log-file-details-close']
   );

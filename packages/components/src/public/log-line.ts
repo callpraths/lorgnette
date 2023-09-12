@@ -23,16 +23,13 @@ export type LogLineEventData = {
  */
 export class LogLine extends BaseElement<LogLineEventData> {
   static styles = css`
-    :host {
+    #container {
+      width: 100%;
+
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       gap: 0.25rem;
-      background-color: ${mainBackgroundColor};
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
-      padding-top: 0.0625;
-      padding-bottom: 0.0625;
     }
     ::slotted([slot='file']) {
       flex-shrink: 0;
@@ -82,21 +79,23 @@ export class LogLine extends BaseElement<LogLineEventData> {
 
   render() {
     return html`
-      <slot name="file"></slot>
-      <slot name="timestamp"></slot>
-      <slot name="text" ${ref(this.textRefChanged)}></slot>
-      <sl-button
-        variant="text"
-        size="small"
-        id="fold-button"
-        @click="${this.toggleFold}"
-        class="${this.foldButtonClass}"
-      >
-        <lvi-icon-line-fold
-          ?expanded=${this.expanded}
-          ?highlighted=${this.highlighted}
-        ></lvi-icon-line-fold>
-      </sl-button>
+      <div id="container">
+        <slot name="file"></slot>
+        <slot name="timestamp"></slot>
+        <slot name="text" ${ref(this.textRefChanged)}></slot>
+        <sl-button
+          variant="text"
+          size="small"
+          id="fold-button"
+          @click="${this.toggleFold}"
+          class="${this.foldButtonClass}"
+        >
+          <lvi-icon-line-fold
+            ?expanded=${this.expanded}
+            ?highlighted=${this.highlighted}
+          ></lvi-icon-line-fold>
+        </sl-button>
+      </div>
     `;
   }
 
