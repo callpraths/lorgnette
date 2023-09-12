@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why slow pre-paint?</title>
+  </head>
+  <body>
+    <div id="app">
+      <button id="toggle-fold">Toggle Fold!</button>
+      <div id="stage"></div>
+    </div>
+    <script defer>
+      window.addEventListener("DOMContentLoaded", () => {
+        const stage = document.getElementById("stage");
+
+        const addLine = (width) => {
+          const line = document.createElement("div");
+          line.className = "folded";
+          for (let i = 0; i < width; i++) {
+            const span = document.createElement("span");
+            span.textContent = `Time now is ${new Date().toLocaleTimeString()}`;
+            line.appendChild(span);
+          }
+          stage.appendChild(line);
+        };
+
+        const toggleButton = document.getElementById("toggle-fold");
+        toggleButton.addEventListener("click", () => {
+          const line = stage.firstChild;
+          line.className = line.className === "folded" ? "unfolded" : "folded";
+        });
+
+        for (let i = 0; i < 500; i++) {
+          addLine(500);
+        }
+      });
+    </script>
+    <style>
+      #stage {
+        overflow: clip;
+      }
+      .folded {
+        white-space: nowrap;
+      }
+      .unfolded {
+        overflow-wrap: anywhere;
+        word-break: break-all;
+      }
+    </style>
+  </body>
+</html>
