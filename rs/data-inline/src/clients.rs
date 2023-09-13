@@ -6,7 +6,7 @@ pub trait IClients<FilesClient: IFilesClient, ViewClient: IViewClient> {
 }
 
 pub trait IFilesClient {
-    fn load(&mut self, path: String);
+    fn load(&mut self, file: web_sys::File);
 }
 
 pub trait IViewClient {

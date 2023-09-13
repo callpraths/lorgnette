@@ -23,8 +23,19 @@ impl IClients<Context, Context> for Context {
 }
 
 impl IFilesClient for Context {
-    fn load(&mut self, path: String) {
-        println!("load {}", path);
+    fn load(&mut self, file: web_sys::File) {
+        println!("data-inline: loading {}", file.name());
+        wasm_bindgen_futures::spawn_local(self.do_load(file));
+    }
+}
+
+impl Context {
+    async fn do_load(&mut self, file: web_sys::File) {
+        let buf = js_sys::ArrayBuffer::from(
+            wasm_bindgen_futures::JsFuture::from(file.array_buffer())
+                .await
+                .unwrap(),
+        );
     }
 }
 

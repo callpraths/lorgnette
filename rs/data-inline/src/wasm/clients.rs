@@ -8,8 +8,8 @@ pub struct FilesClient {}
 
 #[wasm_bindgen]
 impl FilesClient {
-    pub fn load(mut ctx: Context, path: String) {
-        ctx.inner().clients().files().load(path)
+    pub fn load(mut ctx: Context, file: web_sys::File) {
+        ctx.inner().clients().files().load(file)
     }
 }
 
