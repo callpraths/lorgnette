@@ -1,10 +1,5 @@
-use crate::{utils, wasm::context::Context};
+use crate::utils;
 use wasm_bindgen::prelude::*;
-
-#[wasm_bindgen]
-pub fn new() -> Context {
-    Context::new()
-}
 
 #[wasm_bindgen]
 pub fn initialize() {
