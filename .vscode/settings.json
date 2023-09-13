@@ -3,6 +3,10 @@
   "html.customData": [
     "./node_modules/@shoelace-style/shoelace/dist/vscode.html-custom-data.json"
   ],
-  "rust-analyzer.linkedProjects": ["rs/x-paginate/Cargo.toml"],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "rust-analyzer.linkedProjects": [
+    "rs/data-inline/Cargo.toml",
+    "rs/x-paginate/Cargo.toml"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "rust-analyzer.showUnlinkedFileNotification": false
 }
