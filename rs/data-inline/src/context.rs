@@ -7,7 +7,12 @@ use crate::data::*;
 
 pub struct Context {
     me: Weak<Self>,
+    callbacks: RefCell<Callbacks>,
     data: RefCell<Data>,
+}
+
+struct Callbacks {
+    on_update_logs: Option<Box<dyn Fn(Logs)>>,
 }
 
 struct Data {
@@ -18,6 +23,9 @@ impl Context {
     pub fn new() -> Rc<Self> {
         Rc::new_cyclic(|me| Self {
             me: Weak::clone(me),
+            callbacks: RefCell::new(Callbacks {
+                on_update_logs: None,
+            }),
             data: RefCell::new(Data {
                 raw_logs: js_sys::ArrayBuffer::new(0),
             }),
@@ -42,23 +50,60 @@ impl IFilesClient for Context {
     fn load(&self, file: web_sys::File) {
         println!("data-inline: loading {}", file.name());
         let me = self.me.upgrade().unwrap();
-        wasm_bindgen_futures::spawn_local(async move { me.do_load(file).await });
+        wasm_bindgen_futures::spawn_local(async move {
+            let buf = js_sys::ArrayBuffer::from(
+                wasm_bindgen_futures::JsFuture::from(file.array_buffer())
+                    .await
+                    .unwrap(),
+            );
+            {
+                // Be extra careful to manage scope of RefCell borrow.
+                me.data.borrow_mut().raw_logs = buf;
+            }
+            // This will likely be a different "manager" as we gain more internal structure.
+            // For now, split the work of loading the file and notifying the view into separate JS-microtasks.
+            wasm_bindgen_futures::spawn_local(async move {
+                me.notify_new_logs();
+            })
+        });
     }
 }
 
 impl Context {
-    async fn do_load(&self, file: web_sys::File) {
-        let buf = js_sys::ArrayBuffer::from(
-            wasm_bindgen_futures::JsFuture::from(file.array_buffer())
-                .await
-                .unwrap(),
-        );
-        self.data.borrow_mut().raw_logs = buf;
+    fn notify_new_logs(&self) {
+        let raw_text: String = {
+            js_sys::Uint8Array::new(&self.data.borrow().raw_logs)
+                .to_string()
+                .into()
+        };
+        let logs = Logs {
+            lines: raw_text
+                .lines()
+                .map(|raw_line| LogLine {
+                    filename: "unknown".to_string(),
+                    timestamp: "1694734978537".to_string(),
+                    words: raw_line
+                        .split(" ")
+                        .map(|raw_word| {
+                            LogWord::RawText(LogWordRawText {
+                                text: raw_word.to_string(),
+                            })
+                        })
+                        .collect(),
+                })
+                .collect::<Vec<LogLine>>(),
+        };
+
+        let callbacks = &self.callbacks.borrow();
+        if let Some(on_update_logs) = &callbacks.on_update_logs {
+            on_update_logs(logs);
+        }
     }
 }
 
 impl IViewClient for Context {
     fn on_update_logs(&self, callback: Box<dyn Fn(Logs)>) {
-        println!("on_update_logs");
+        let mut callbacks = self.callbacks.borrow_mut();
+        callbacks.on_update_logs = Some(callback);
     }
 }

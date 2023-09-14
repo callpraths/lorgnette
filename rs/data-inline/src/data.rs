@@ -11,7 +11,7 @@ use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct Logs {
-    lines: Vec<LogLine>,
+    pub lines: Vec<LogLine>,
 }
 
 #[derive(Serialize)]
