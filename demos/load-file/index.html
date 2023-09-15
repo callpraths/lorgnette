@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log File Loader</title>
+  </head>
+  <body>
+    <style>
+      #root {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+        box-sizing: border-box;
+        border: blue 0.125rem solid;
+      }
+      #header {
+        display: flex;
+        flex-direction: column;
+        border: green 0.125rem solid;
+        margin: 0.0625rem;
+        padding: 1rem;
+      }
+      #stage {
+        height: 100%;
+        margin: 0.0625rem;
+        border: green 0.125rem solid;
+      }
+    </style>
+    <div id="root">
+      <div id="header">
+        <label for="log-file-loader">Load a log file:</label>
+        <input type="file" id="log-file-loader" name="log-file-loader" />
+      </div>
+      <div id="stage"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
