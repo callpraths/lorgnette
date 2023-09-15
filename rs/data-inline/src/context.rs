@@ -16,7 +16,7 @@ struct Callbacks {
 }
 
 struct Data {
-    raw_logs: js_sys::ArrayBuffer,
+    raw_logs: String,
 }
 
 impl Context {
@@ -27,7 +27,7 @@ impl Context {
                 on_update_logs: None,
             }),
             data: RefCell::new(Data {
-                raw_logs: js_sys::ArrayBuffer::new(0),
+                raw_logs: "".to_string(),
             }),
         })
     }
@@ -51,14 +51,12 @@ impl IFilesClient for Context {
         println!("data-inline: loading {}", file.name());
         let me = self.me.upgrade().unwrap();
         wasm_bindgen_futures::spawn_local(async move {
-            let buf = js_sys::ArrayBuffer::from(
-                wasm_bindgen_futures::JsFuture::from(file.array_buffer())
-                    .await
-                    .unwrap(),
-            );
+            let text = wasm_bindgen_futures::JsFuture::from(file.text())
+                .await
+                .unwrap();
             {
                 // Be extra careful to manage scope of RefCell borrow.
-                me.data.borrow_mut().raw_logs = buf;
+                me.data.borrow_mut().raw_logs = text.as_string().unwrap().into();
             }
             // This will likely be a different "manager" as we gain more internal structure.
             // For now, split the work of loading the file and notifying the view into separate JS-microtasks.
@@ -71,13 +69,9 @@ impl IFilesClient for Context {
 
 impl Context {
     fn notify_new_logs(&self) {
-        let raw_text: String = {
-            js_sys::Uint8Array::new(&self.data.borrow().raw_logs)
-                .to_string()
-                .into()
-        };
+        let raw_logs = &self.data.borrow().raw_logs;
         let logs = Logs {
-            lines: raw_text
+            lines: raw_logs
                 .lines()
                 .map(|raw_line| LogLine {
                     filename: "unknown".to_string(),

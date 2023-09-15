@@ -11,8 +11,10 @@ This monorepository is a [yarn workspace](https://yarnpkg.com/features/workspace
 - [rs/](./rs/) contains [Rust](https://www.rust-lang.org) packages that are compiled to WASM.
   - [rs/x-paginate](./rs/x-paginate) is a small WASM library used to benchmark the JS-WASM bridge for paginated
     logs.
+  - [rs/data-inline](./rs/data-inline/) is the WASM backend for WASM.
 - [demos/](./demos/) contains various demo apps, written in [Vue.js](https://vuejs.org/) using the components and WASM packages defined above.
   - [demos/perf-bridge](./demos/perf-bridge) is a demo app that benchmarks the JS-WASM bridge for paginated logs.
+  - [demos/load-file](./demos/load-file/) is a demo app that loads a file and displays it in a log viewer.
 
 In-tree dependencies are specified in package.json files as `"lorgnette-components": "*"` etc.
 
@@ -37,6 +39,11 @@ You can use the package scripts in each of the packages to independently build a
 ```sh
 # Incrementally build the perf-bridge demo with its local dependencies.
 node tools/cli/serve-demo/perf-bridge.mjs
+```
+
+```sh
+# Incrementally build the perf-bridge demo with its local dependencies.
+node tools/cli/serve-demo/load-file.mjs
 ```
 
 # Build configuration

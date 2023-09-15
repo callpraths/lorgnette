@@ -8,8 +8,7 @@
   <body>
     <style>
       #root {
-        display: flex;
-        flex-direction: column;
+        display: block;
         height: 100vh;
         width: 100%;
         box-sizing: border-box;
@@ -17,15 +16,18 @@
       }
       #header {
         display: flex;
+        height: 10%;
         flex-direction: column;
         border: green 0.125rem solid;
         margin: 0.0625rem;
         padding: 1rem;
+        box-sizing: border-box;
       }
       #stage {
-        height: 100%;
         margin: 0.0625rem;
+        height: 90%;
         border: green 0.125rem solid;
+        box-sizing: border-box;
       }
     </style>
     <div id="root">

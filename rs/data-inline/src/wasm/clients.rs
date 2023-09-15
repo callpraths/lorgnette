@@ -8,7 +8,7 @@ pub struct FilesClient {}
 
 #[wasm_bindgen]
 impl FilesClient {
-    pub fn load(mut ctx: Context, file: web_sys::File) {
+    pub fn load(ctx: &mut Context, file: web_sys::File) {
         ctx.inner().clients().files().load(file)
     }
 }
@@ -18,7 +18,7 @@ pub struct ViewClient {}
 
 #[wasm_bindgen]
 impl ViewClient {
-    pub fn on_update_logs(mut ctx: Context, callback: js_sys::Function) {
+    pub fn on_update_logs(ctx: &mut Context, callback: js_sys::Function) {
         let callback = Box::new(move |logs: Logs| {
             let logs = serde_wasm_bindgen::to_value(&logs).unwrap();
             callback.call1(&JsValue::NULL, &logs).unwrap();

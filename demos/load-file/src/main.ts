@@ -1,11 +1,13 @@
-import "./style.css";
 import * as dataInline from "data-inline";
+import "lorgnette-components/define.js";
+import { parseLogs } from "./logs";
+import "./style.css";
+
+let _ctx: dataInline.Context | undefined;
 
 function main() {
-  dataInline.initialize();
-
-  const ctx = dataInline.Context.new();
-  setupCallbacks(ctx);
+  initialize();
+  setupCallbacks(ctx());
 
   const input = document.querySelector<HTMLInputElement>("#log-file-loader")!;
   input.addEventListener("input", (event) => {
@@ -13,37 +15,62 @@ function main() {
     if (!file) {
       return;
     }
-    load_file(ctx, file);
+    load_file(file);
   });
 }
 
 function setupCallbacks(ctx: dataInline.Context) {
-  const viewClient = dataInline.ViewClient.new();
-  viewClient.on_update_logs(ctx, (logs: string) => {
+  dataInline.ViewClient.on_update_logs(ctx, (rawLogs: string) => {
     const stage = document.querySelector<HTMLDivElement>("#stage")!;
+    const logs = parseLogs(rawLogs);
+    const logsHTML = logs.lines
+      .map(
+        (line) => `
+    <lv-log-line>
+      <lv-log-file slot="file" path="${line.filename}"></lv-log-file>
+      <lv-log-timestamp slot="timestamp" value="${
+        line.timestamp
+      }"></lv-log-timestamp>
+      <lv-log-text id="text" slot="text">
+        ${line.words
+          .map(
+            (word) => `
+          <lv-log-word>${word.RawText?.text}</lv-log-word>
+        `
+          )
+          .join(" ")}
+      </lv-log-text>
+    </lv-log-line>
+    `
+      )
+      .join(" ");
     stage.innerHTML = `
-    <h3>Loaded file:</h3>
-    <p>
-      <pre>${JSON.stringify(logs, undefined, 2)}</pre>
-    </p>
+          <lv-layout-main-window>
+            <lv-layout-logs-pane slot="logs-pane">
+              ${logsHTML}
+            </lv-layout-logs-pane>
+            <div style="background-color: gray;" slot="toolbar-pane"></div>
+          </lv-layout-main-window>
     `;
-  }
-
+  });
 }
 
-async function load_file(ctx: dataInline.Context, file: File) {
+async function load_file(file: File) {
   console.log(file);
-  const stage = document.querySelector<HTMLDivElement>("#stage")!;
+  dataInline.FilesClient.load(ctx(), file);
+}
 
-  const fileClient = dataInline.FilesClient.new();
-  fileClient.load(ctx, file);
-  stage.innerHTML = `
-  <h3>File loaded: ${file.name}</h3>
-  <ul>
-    <li>Size: ${file.size}</li>
-    <li>Type: ${file.type}</li>
-  </ul>
-  `;
+function ctx() {
+  if (!_ctx) {
+    throw new Error(`No context yet`);
+  }
+  return _ctx;
+}
+
+function initialize() {
+  dataInline.initialize();
+  // Note: `_ctx` is currently leaked at app teardown.
+  _ctx = dataInline.Context.new();
 }
 
 main();
